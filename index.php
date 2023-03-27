@@ -8,6 +8,7 @@
 </head>
 
 <body>
-    <p>lol dit werkt <?php echo ": poep" ?> </p>
+    <p>dit is een test:</p>
+    <!-- <p>dit is een test:<?php //echo " de test werkt." ?> </p> -->
 </body>
 </html>
