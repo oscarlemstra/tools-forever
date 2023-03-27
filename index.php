@@ -8,7 +8,10 @@
 </head>
 
 <body>
-    <p>dit is een test:</p>
-    <!-- <p>dit is een test:<?php //echo " de test werkt." ?> </p> -->
+    <!-- <p>dit is een test:</p> -->
+    <p>dit is een test:<?php echo " de test werkt." ?> </p>
+
+
+    <div style="border: black 2px solid; height: 100px; width: 100px;"></div>
 </body>
 </html>
