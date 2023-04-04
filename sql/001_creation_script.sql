@@ -30,6 +30,6 @@ CREATE TABLE `staff` (
    `role_id` int NOT NULL,
    `first_name` VARCHAR(45) NOT NULL,
    `last_name` VARCHAR(45) NOT NULL,
-   `password` VARCHAR(200) NOT NULL,
-   
+   `password` CHAR(128) NOT NULL, -- sha512
+   FOREIGN KEY [foreign_key_name] (`location_id`) REFERENCES `locations`(`id`)
 ) ENGINE=INNODB;
