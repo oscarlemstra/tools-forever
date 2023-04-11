@@ -32,11 +32,11 @@ CREATE TABLE `staff` (
    `last_name` VARCHAR(45) NOT NULL,
    `password` CHAR(128) NOT NULL, -- sha512
    FOREIGN KEY (`location_id`) REFERENCES `locations`(`id`)
-   ON UPDATE CASCADE
-   ON DELETE RESTRICT,
+      ON UPDATE CASCADE
+      ON DELETE RESTRICT,
    FOREIGN KEY (`role_id`) REFERENCES `roles`(`id`)
-   ON UPDATE CASCADE
-   ON DELETE RESTRICT
+      ON UPDATE CASCADE
+      ON DELETE RESTRICT
 ) ENGINE=INNODB;
 
 CREATE TABLE `products` (
@@ -47,11 +47,11 @@ CREATE TABLE `products` (
    `purchase_price` DECIMAL(12, 2) NOT NULL,
    `sell_price` DECIMAL(12, 2) NOT NULL,
    FOREIGN KEY (`product_name_id`) REFERENCES `product_names`(`id`)
-   ON UPDATE CASCADE
-   ON DELETE RESTRICT,
+      ON UPDATE CASCADE
+      ON DELETE RESTRICT,
    FOREIGN KEY (`manufacturer_id`) REFERENCES `manufacturers`(`id`)
-   ON UPDATE CASCADE
-   ON DELETE RESTRICT
+      ON UPDATE CASCADE
+      ON DELETE RESTRICT
 ) ENGINE=INNODB;
 
 CREATE TABLE `location_has_products` (
@@ -61,9 +61,9 @@ CREATE TABLE `location_has_products` (
    `min_stock` INT NOT NULL,
    PRIMARY KEY (`location_id`, `product_id`),
    FOREIGN KEY (`location_id`) REFERENCES `locations`(`id`)
-   ON UPDATE CASCADE
-   ON DELETE RESTRICT,
+      ON UPDATE CASCADE
+      ON DELETE RESTRICT,
    FOREIGN KEY (`product_id`) REFERENCES `products`(`id`)
-   ON UPDATE CASCADE
-   ON DELETE RESTRICT
+      ON UPDATE CASCADE
+      ON DELETE RESTRICT
 ) ENGINE=INNODB;
