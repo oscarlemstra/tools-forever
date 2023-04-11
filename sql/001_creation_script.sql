@@ -14,7 +14,7 @@ CREATE TABLE `locations` (
    `place_name` VARCHAR(45) NOT NULL
 ) ENGINE=INNODB;
 
-CREATE TABLE `product_name` (
+CREATE TABLE `product_names` (
    `id` INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
    `name` VARCHAR(45) NOT NULL
 ) ENGINE=INNODB;
