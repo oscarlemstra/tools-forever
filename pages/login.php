@@ -8,8 +8,14 @@
     <title>Login</title>
 </head>
 <body>
-    <div>
-        <p>test</p>
-    </div>
+    <form action="" method="post">
+        <label for="username">Gebruikersnaam</label><br>
+        <input type="text" id="username" name="username" placeholder="Gebruikersnaam" autofocus required><br><br>
+
+        <label for="password">Wachtwoord</label><br>
+        <input type="password" id="password" name="password" placeholder="Wachtwoord" required><br><br>
+    
+        <input type="submit" value="Login">
+    </form>
 </body>
 </html>
