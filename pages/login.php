@@ -8,9 +8,12 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="" method="post">
-        <label for="username">Gebruikersnaam</label><br>
-        <input type="text" id="username" name="username" placeholder="Gebruikersnaam" autofocus required><br><br>
+    <form action="../actions/login.php" method="post">
+        <label for="first_name">Voornaam</label><br>
+        <input type="text" id="first_name" name="first_name" placeholder="Voornaam" autofocus required><br><br>
+
+        <label for="last_name">Tussenvoegsel en achternaam</label><br>
+        <input type="text" id="last_name" name="last_name" placeholder="Achternaam" required><br><br>
 
         <label for="password">Wachtwoord</label><br>
         <input type="password" id="password" name="password" placeholder="Wachtwoord" required><br><br>
