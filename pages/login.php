@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +19,8 @@
 
         <label for="password">Wachtwoord</label><br>
         <input type="password" id="password" name="password" placeholder="Wachtwoord" required><br><br>
+
+        <!--TO-DO error bericht check -->
     
         <input type="submit" value="Login">
     </form>

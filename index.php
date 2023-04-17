@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +10,7 @@
 </head>
 
 <body>
-    <!-- <p>dit is een test:</p> -->
+    <p>Welkom <?php echo $_SESSION['user']['first_name']; ?></p>
     <p>dit is een test:<?php echo " de test werkt." ?> </p>
 
 

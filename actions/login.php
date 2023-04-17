@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $servername = "localhost";
 $dbname = "tools_forever";
@@ -17,10 +18,34 @@ try {
 } catch (PDOException $e) {
     echo "Error : " . $e->getMessage();
 }
-
 $conn = null;
+
+
+if ($_POST['first_name'] !== $result[0]['first_name']) {
+    $_SESSION['error'] = 'Gegevens zijn fout!';
+    header('Location: ../pages/login.php');
+    exit();
+}
+
+if ($_POST['last_name'] !== $result[0]['last_name']) {
+    $_SESSION['error'] = 'Gegevens zijn fout!';
+    header('Location: ../pages/login.php');
+    exit();
+}
+
+if (hash('sha512', $_POST['password']) !== $result[0]['password']) {
+    $_SESSION['error'] = 'Gegevens zijn fout!';
+    header('Location: ../pages/login.php');
+    exit();
+}
+
+//TO-DO $_SESSION['error'] deleten
+$_SESSION['user'] = $result[0];
+header('Location: ../index.php');
+exit();
 ?>
 
+<!-- debug -->
 <pre>
     <?php print_r($_POST); ?>
 </pre>
@@ -28,3 +53,4 @@ $conn = null;
 <pre>
     <?php print_r($result); ?>
 </pre>
+<!-- debug -->
