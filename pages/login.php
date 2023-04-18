@@ -18,9 +18,13 @@
         <input type="text" id="last_name" name="last_name" placeholder="Achternaam" required><br><br>
 
         <label for="password">Wachtwoord</label><br>
-        <input type="password" id="password" name="password" placeholder="Wachtwoord" required><br><br>
+        <input type="password" id="password" name="password" placeholder="Wachtwoord" required><br>
 
-        <!--TO-DO error bericht check -->
+        <?php
+            if (isset($_SESSION['error'])) {
+                echo "<p class='error'>".$_SESSION['error']."</p>";
+            }
+        ?>
     
         <input type="submit" value="Login">
     </form>

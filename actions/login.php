@@ -16,7 +16,10 @@ try {
 
     $result = $stmt->fetchAll();
 } catch (PDOException $e) {
-    echo "Error : " . $e->getMessage();
+    $_SESSION['error'] = 'Er is iets fout gegaan, probeer het later opnieuw!';
+    header('Location: ../pages/login.php');
+    exit();
+    //echo "Error : " . $e->getMessage();
 }
 $conn = null;
 
@@ -39,18 +42,8 @@ if (hash('sha512', $_POST['password']) !== $result[0]['password']) {
     exit();
 }
 
-//TO-DO $_SESSION['error'] deleten
 $_SESSION['user'] = $result[0];
+unset($_SESSION['error']);
 header('Location: ../index.php');
 exit();
 ?>
-
-<!-- debug -->
-<pre>
-    <?php print_r($_POST); ?>
-</pre>
-
-<pre>
-    <?php print_r($result); ?>
-</pre>
-<!-- debug -->
