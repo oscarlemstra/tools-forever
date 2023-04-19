@@ -10,20 +10,20 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="main-div">
+    <div class="flex-box justify-content-center align-items-center gap-75">
         <img class="img-s-m" src="../resources/img/nut_screwdriver.png" alt="logo icon">
         
         <!-- TO-DO delete <br> -->
 
         <form class="element element-s-m" action="../actions/login.php" method="post">
             <!-- <label for="first_name">Voornaam</label><br> -->
-            <input type="text" id="first_name" name="first_name" placeholder="Voornaam" autofocus required>
+            <input class="mb-25" type="text" id="first_name" name="first_name" placeholder="Voornaam" autofocus required>
             
             <!-- <label for="last_name">Tussenvoegsel en achternaam</label><br> -->
-            <input type="text" id="last_name" name="last_name" placeholder="Achternaam" required>
+            <input class="mb-25" type="text" id="last_name" name="last_name" placeholder="Achternaam" required>
 
             <!-- <label for="password">Wachtwoord</label><br> -->
-            <input type="password" id="password" name="password" placeholder="Wachtwoord" required>
+            <input class="mb-25" type="password" id="password" name="password" placeholder="Wachtwoord" required>
         
             <?php
                 if (isset($_SESSION['error'])) {
@@ -31,7 +31,7 @@
                 }
             ?>
     
-            <input class="login-bt" type="submit" value="Login">
+            <input class="login-bt mt-25" type="submit" value="Login">
         </form>
     </div>
 </body>
