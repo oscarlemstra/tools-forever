@@ -52,7 +52,7 @@ input {
 
 
 
-/* margin and padding */
+/* other */
 
 .mt-25 {
     margin-top: 25px;
@@ -60,6 +60,10 @@ input {
 
 .mb-25 {
     margin-bottom: 25px;
+}
+
+.h-vh-80 {
+    height: 80vh;
 }
 
 

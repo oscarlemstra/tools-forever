@@ -10,19 +10,14 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="flex-box justify-content-center align-items-center gap-75">
+    <div class="flex-box h-vh-80 justify-content-center align-items-center gap-75">
         <img class="img-s-m" src="../resources/img/nut_screwdriver.png" alt="logo icon">
         
-        <!-- TO-DO delete <br> -->
-
         <form class="element element-s-m" action="../actions/login.php" method="post">
-            <!-- <label for="first_name">Voornaam</label><br> -->
             <input class="mb-25" type="text" id="first_name" name="first_name" placeholder="Voornaam" autofocus required>
             
-            <!-- <label for="last_name">Tussenvoegsel en achternaam</label><br> -->
             <input class="mb-25" type="text" id="last_name" name="last_name" placeholder="Achternaam" required>
 
-            <!-- <label for="password">Wachtwoord</label><br> -->
             <input class="mb-25" type="password" id="password" name="password" placeholder="Wachtwoord" required>
         
             <?php
