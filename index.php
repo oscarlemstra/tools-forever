@@ -13,7 +13,7 @@
     <p>Welkom <?php echo $_SESSION['user']['first_name']." ".$_SESSION['user']['last_name']; ?></p>
     <p>dit is een test:<?php echo " de test werkt."; ?> </p>
 
-
+    <!-- test -->
     <div style="border: black 2px solid; height: 100px; width: 100px;"></div>
 </body>
 </html>
