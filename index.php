@@ -10,7 +10,7 @@
     <title>Home</title>
 </head>
 <body>
-    <div>
+    <div class="main-div">
         <nav class="flex-box align-items-center justify-content-space-between">
             <img class="img-s-s" src="./resources/img/nut_screwdriver.png" alt="logo icon">
 
@@ -21,9 +21,8 @@
                 <a class="nav-link" href="">Werknemers</a>
             </div>
         </nav>
-        
         <div class="flex-box">
-            <form class="" action="" method="post">
+            <form class="element element-s-s p-10" action="" method="post">
                 <select id="location" name="location">
                     <option value="test1">test 1</option>
                     <option value="test2">test 2</option>
@@ -41,8 +40,7 @@
                 ?>
         
                 <input class="" type="submit" value="Zoeken">
-            </from>
-
+            </form>
             <div>
                 <div>
                     <h1>Voorraad overzicht</h1>

@@ -1,14 +1,14 @@
 * {
     box-sizing: border-box;
     font-family: sans-serif;
-    /* border: dotted black 1px; */
 }
 
 body {
     background-color: #F1E8AA;
 }
 
-.main-div { /* kan miss weg */
+.main-div {
+    width: 900px;
     margin: auto;
 }
 
@@ -30,13 +30,16 @@ body {
 
 .element {
     background-color: #FFD185;
-    padding: 30px;
     border-radius: 10px;
     width: fit-content;
 }
 
 .element-s-m {
     width: 275px;
+}
+
+.element-s-s {
+    width: 175px;
 }
 
 .img-s-m {
@@ -63,7 +66,7 @@ body {
     border-radius: 15px;
 }
 
-input {
+input, select {
     padding: 7px;
     border-radius: 5px;
     border: solid #8492A6 1px;
@@ -85,6 +88,14 @@ nav {
 
 .mb-25 {
     margin-bottom: 25px;
+}
+
+.p-30 {
+    padding: 30px;
+}
+
+.p-10 {
+    padding: 10px;
 }
 
 .h-vh-80 {
