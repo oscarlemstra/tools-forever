@@ -1,10 +1,11 @@
 * {
     box-sizing: border-box;
+    font-family: sans-serif;
+    /* border: dotted black 1px; */
 }
 
 body {
     background-color: #F1E8AA;
-    /* background-color: peachpuff; */
 }
 
 .main-div { /* kan miss weg */
@@ -43,11 +44,35 @@ body {
     height: 200px;
 }
 
+.img-s-s {
+    width: 50px;
+    height: 50px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #47525E;
+    padding: 10px;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.nav-link-selected {
+    color: white;
+    background-color: hsla(12, 54%, 39%, 0.87);
+    border-radius: 15px;
+}
+
 input {
     padding: 7px;
     border-radius: 5px;
     border: solid #8492A6 1px;
     width: 100%;
+}
+
+nav {
+    background-color: #FFD185;
+    padding: 10px;
 }
 
 
@@ -76,6 +101,10 @@ input {
 
 .justify-content-center {
     justify-content: center;
+}
+
+.justify-content-space-between {
+    justify-content: space-between;
 }
 
 .align-items-center {
