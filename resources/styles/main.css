@@ -93,6 +93,37 @@ nav {
 
 
 
+/* table */
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    width: 20%;
+}
+
+tr th:last-child {
+    border-right: none;
+}
+
+tr td:last-child {
+    border-right: none;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+th, td {
+    border-bottom: solid #343F4B 2px;
+    border-right: solid #343F4B 2px;
+    padding: 5px;
+}
+
+
+
 /* other */
 
 .mt-25 {
