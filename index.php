@@ -21,7 +21,7 @@
                 <a class="nav-link" href="">Werknemers</a>
             </div>
         </nav>
-        <div class="flex-box gap-20">
+        <div class="flex-box align-items-flex-start gap-20">
             <form class="element element-s-s p-10" action="" method="post">
                 <select class="mb-10" id="location" name="location">
                     <option value="test1">test 1</option>
