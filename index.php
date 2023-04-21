@@ -21,14 +21,14 @@
                 <a class="nav-link" href="">Werknemers</a>
             </div>
         </nav>
-        <div class="flex-box">
+        <div class="flex-box gap-20">
             <form class="element element-s-s p-10" action="" method="post">
-                <select id="location" name="location">
+                <select class="mb-10" id="location" name="location">
                     <option value="test1">test 1</option>
                     <option value="test2">test 2</option>
                 </select>
 
-                <select id="product" name="product">
+                <select class="mb-10" id="product" name="product">
                     <option value="test1">test 1</option>
                     <option value="test2">test 2</option>
                 </select>
@@ -39,13 +39,13 @@
                     }
                 ?>
         
-                <input class="" type="submit" value="Zoeken">
+                <input class="main-bt mt-25" type="submit" value="Zoeken">
             </form>
             <div>
                 <div>
                     <h1>Voorraad overzicht</h1>
                 </div>
-                <div>
+                <div class="element element-s-l p-15">
                     <table>
                         <tr>
                             <th>Product</th>

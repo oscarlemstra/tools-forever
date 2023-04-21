@@ -28,10 +28,23 @@ body {
     font-weight: bold;
 }
 
+.main-bt {
+    background-color: hsla(12, 54%, 39%, 0.87);
+    border-radius: 5px;
+    color: white;
+    border: none;
+    padding: 10px 0px 10px 0px;
+    width: 100%;
+    font-weight: bold;
+}
+
 .element {
     background-color: #FFD185;
     border-radius: 10px;
-    width: fit-content;
+}
+
+.element-s-l {
+    width: 650px;
 }
 
 .element-s-m {
@@ -90,8 +103,16 @@ nav {
     margin-bottom: 25px;
 }
 
+.mb-10 {
+    margin-bottom: 10px;
+}
+
 .p-30 {
     padding: 30px;
+}
+
+.p-15 {
+    padding: 15px;
 }
 
 .p-10 {
@@ -120,6 +141,10 @@ nav {
 
 .align-items-center {
     align-items: center;
+}
+
+.gap-20 {
+    gap: 20px;
 }
 
 .gap-75 {
