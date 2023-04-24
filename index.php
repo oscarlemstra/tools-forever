@@ -13,6 +13,10 @@
     <title>Home</title>
 </head>
 <body>
+
+    <pre><?php print_r($_SESSION['products']); ?></pre>
+    <pre><?php print_r($_POST); ?></pre>
+
     <div class="main-div">
         <nav class="flex-box align-items-center justify-content-space-between">
             <img class="img-s-s" src="./resources/img/nut_screwdriver.png" alt="logo icon">
@@ -25,18 +29,26 @@
             </div>
         </nav>
         <div class="flex-box align-items-flex-start gap-20">
-            <form class="element element-s-s p-10 mt-45" action="./actions/index.php" method="post">
-                <select class="mb-10" id="location" name="location" required>
-                    <option value="">Locatie</option>
-                    <option value="test1">test 1</option>
-                    <option value="test2">test 2</option>
-                </select>
+            <form class="element element-s-s p-10 mt-45" action="" method="post">
+                <?php // a select element for location
+                    echo '<select class="mb-10" id="location" name="location" required>';
+                    echo '<option value="">Locatie</option>';
 
-                <select class="mb-10" id="product" name="product">
-                    <option value="">Product</option>
-                    <option value="test1">test 1</option>
-                    <option value="test2">test 2</option>
-                </select>
+                    foreach ($_SESSION['locations'] as $location) {
+                        echo '<option value="'.$location['id'].'">'.$location['place_name'].'</option>';
+                    }
+                    echo '</select>';
+                ?>
+
+                <?php // a select element for prduct
+                    echo '<select class="mb-10" id="product" name="product">';
+                    echo '<option value="">Product</option>';
+
+                    foreach ($_SESSION['product_names'] as $product_name) {
+                        echo '<option value="'.$product_name['id'].'">'.$product_name['name'].'</option>';
+                    }
+                    echo '</select>';
+                ?>
 
                 <?php
                     if (isset($_SESSION['error'])) {
@@ -75,7 +87,5 @@
             </div>
         </div>
     </div>
-
-    <pre><?php print_r($_SESSION['products']); ?></pre>
 </body>
 </html>
