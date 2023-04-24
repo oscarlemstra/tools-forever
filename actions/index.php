@@ -48,8 +48,9 @@ try {
     if (!isset($_POST['location'])) {
         // TODO: fix query! 
         $stmt = $conn->prepare(
-            "SELECT * FROM `location_has_products` WHERE `location_id` = ?
-            INNER JOIN `products` ON `location_has_products`.`product_id` = `products`.`id`"
+            "SELECT * FROM `location_has_products` `lhp`
+            INNER JOIN `products` `p` ON `lhp`.`product_id` = `p`.`id`
+            WHERE `lhp`.`location_id` = ?"
         );
         $stmt->execute([$_SESSION['user']['location_id']]);
     } else {
