@@ -22,13 +22,15 @@
             </div>
         </nav>
         <div class="flex-box align-items-flex-start gap-20">
-            <form class="element element-s-s p-10" action="" method="post">
-                <select class="mb-10" id="location" name="location">
+            <form class="element element-s-s p-10 mt-45" action="" method="post">
+                <select class="mb-10" id="location" name="location" required>
+                    <option value="">Locatie</option>
                     <option value="test1">test 1</option>
                     <option value="test2">test 2</option>
                 </select>
 
                 <select class="mb-10" id="product" name="product">
+                    <option value="">Product</option>
                     <option value="test1">test 1</option>
                     <option value="test2">test 2</option>
                 </select>

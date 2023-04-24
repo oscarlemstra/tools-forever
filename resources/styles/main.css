@@ -91,6 +91,10 @@ nav {
     padding: 10px;
 }
 
+h1 {
+    font-size: large;
+}
+
 
 
 /* table */
@@ -117,9 +121,10 @@ table tr:last-child td {
 }
 
 th, td {
-    border-bottom: solid #343F4B 2px;
+    border-bottom: solid #343F4B 1px;
     border-right: solid #343F4B 2px;
     padding: 5px;
+    font-size: smaller;
 }
 
 
@@ -128,6 +133,10 @@ th, td {
 
 .mt-25 {
     margin-top: 25px;
+}
+
+.mt-45 {
+    margin-top: 45px;
 }
 
 .mb-25 {
