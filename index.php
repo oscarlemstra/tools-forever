@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php 
+    session_start();
+    require_once "./actions/index.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +25,7 @@
             </div>
         </nav>
         <div class="flex-box align-items-flex-start gap-20">
-            <form class="element element-s-s p-10 mt-45" action="" method="post">
+            <form class="element element-s-s p-10 mt-45" action="./actions/index.php" method="post">
                 <select class="mb-10" id="location" name="location" required>
                     <option value="">Locatie</option>
                     <option value="test1">test 1</option>
@@ -73,6 +76,6 @@
         </div>
     </div>
 
-    <!-- <pre><?php //print_r($_SESSION['user']); ?></pre> -->
+    <pre><?php print_r($_SESSION['products']); ?></pre>
 </body>
 </html>
