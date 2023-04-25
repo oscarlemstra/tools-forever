@@ -70,18 +70,19 @@
                             <th>Fabriek</th>
                             <th>In voorraad</th>
                         </tr>
-                        <tr>
-                            <td>Futterkiste</td>
-                            <td>Maria</td>
-                            <td>Germany</td>
-                            <td>Germany</td>
-                        </tr>
-                        <tr>
-                            <td>Centro</td>
-                            <td>Francisco</td>
-                            <td>Mexico</td>
-                            <td>Mexico</td>
-                        </tr>
+                        <?php // create's <tr> elements with the products data
+                            foreach ($_SESSION['products'] as $product) {
+                                echo '<tr>';
+                                foreach ($product as $index => $value) {
+                                    if (gettype($index) === "string") {
+                                        echo '<td>'.$value.'</td>';
+                                    } else {
+                                        continue;
+                                    }
+                                }
+                                echo '</tr>';
+                            }
+                        ?>
                     </table>
                 </div>
             </div>

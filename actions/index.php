@@ -46,16 +46,40 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     if (!isset($_POST['location'])) {
-        // TODO: fix query! 
         $stmt = $conn->prepare(
-            "SELECT * FROM `location_has_products` `lhp`
+            "SELECT `pn`.`name` AS `product_name`, `p`.`type`, `m`.`name` AS `manufacturer`, `lhp`.`in_stock`
+            FROM `location_has_products` `lhp`
             INNER JOIN `products` `p` ON `lhp`.`product_id` = `p`.`id`
+            INNER JOIN `product_names` `pn` ON `p`.`product_name_id` = `pn`.`id`
+            INNER JOIN `manufacturers` `m` ON `p`.`manufacturer_id` = `m`.`id`
             WHERE `lhp`.`location_id` = ?"
         );
         $stmt->execute([$_SESSION['user']['location_id']]);
-    } else {
-        $stmt = $conn->prepare("SELECT * FROM `location_has_products` WHERE `location_id` = ?");
+    }
+    
+    // TODO: fix this!
+    if (isset($_POST['location']) && !isset($_POST['product'])) {
+        $stmt = $conn->prepare(
+            "SELECT `pn`.`name` AS `product_name`, `p`.`type`, `m`.`name` AS `manufacturer`, `lhp`.`in_stock`
+            FROM `location_has_products` `lhp`
+            INNER JOIN `products` `p` ON `lhp`.`product_id` = `p`.`id`
+            INNER JOIN `product_names` `pn` ON `p`.`product_name_id` = `pn`.`id`
+            INNER JOIN `manufacturers` `m` ON `p`.`manufacturer_id` = `m`.`id`
+            WHERE `lhp`.`location_id` = ?"
+        );
         $stmt->execute([$_POST['location']]);
+    }
+    
+    if (isset($_POST['location']) && isset($_POST['product'])) {
+        $stmt = $conn->prepare(
+            "SELECT `pn`.`name` AS `product_name`, `p`.`type`, `m`.`name` AS `manufacturer`, `lhp`.`in_stock`
+            FROM `location_has_products` `lhp`
+            INNER JOIN `products` `p` ON `lhp`.`product_id` = `p`.`id`
+            INNER JOIN `product_names` `pn` ON `p`.`product_name_id` = `pn`.`id`
+            INNER JOIN `manufacturers` `m` ON `p`.`manufacturer_id` = `m`.`id`
+            WHERE `lhp`.`location_id` = ? AND `p`.`product_name_id` = ?"
+        );
+        $stmt->execute([$_POST['location'], $_POST['product']]);
     }
 
     $result = $stmt->fetchAll();
@@ -66,7 +90,8 @@ try {
 $conn = null;
 
 $_SESSION['products'] = $result;
-//unset($_SESSION['error']);
 
+
+//unset($_SESSION['error']);
 // TODO: fix errors!
 ?>
