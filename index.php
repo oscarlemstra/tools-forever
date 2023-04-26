@@ -31,7 +31,19 @@
                     echo '<option value="">Locatie</option>';
 
                     foreach ($_SESSION['locations'] as $location) {
-                        echo '<option value="'.$location['id'].'">'.$location['place_name'].'</option>';
+                        if (!empty($_POST)) {
+                            if ($location['id'] === $_POST['location']) {
+                                echo '<option value="'.$location['id'].'" selected>'.$location['place_name'].'</option>';
+                            } else {
+                                echo '<option value="'.$location['id'].'">'.$location['place_name'].'</option>';
+                            }
+                        } else {
+                            if ($location['id'] === $_SESSION['user']['location_id']) {
+                                echo '<option value="'.$location['id'].'" selected>'.$location['place_name'].'</option>';
+                            } else {
+                                echo '<option value="'.$location['id'].'">'.$location['place_name'].'</option>';
+                            }
+                        }
                     }
                     echo '</select>';
                 ?>
@@ -41,7 +53,11 @@
                     echo '<option value="">Product</option>';
 
                     foreach ($_SESSION['product_names'] as $product_name) {
-                        echo '<option value="'.$product_name['id'].'">'.$product_name['name'].'</option>';
+                        if ($product_name['id'] === $_POST['product']) {
+                            echo '<option value="'.$product_name['id'].'" selected>'.$product_name['name'].'</option>';
+                        } else {
+                            echo '<option value="'.$product_name['id'].'">'.$product_name['name'].'</option>';
+                        }
                     }
                     echo '</select>';
                 ?>
