@@ -45,7 +45,7 @@ try {
     $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    if (!isset($_POST['location'])) {
+    if (empty($_POST)) {
         $stmt = $conn->prepare(
             "SELECT `pn`.`name` AS `product_name`, `p`.`type`, `m`.`name` AS `manufacturer`, `lhp`.`in_stock`
             FROM `location_has_products` `lhp`
@@ -58,7 +58,7 @@ try {
     }
     
     // TODO: fix this!
-    if (isset($_POST['location']) && !isset($_POST['product'])) {
+    if (!empty($_POST['location']) && empty($_POST['product'])) {
         $stmt = $conn->prepare(
             "SELECT `pn`.`name` AS `product_name`, `p`.`type`, `m`.`name` AS `manufacturer`, `lhp`.`in_stock`
             FROM `location_has_products` `lhp`
@@ -70,7 +70,7 @@ try {
         $stmt->execute([$_POST['location']]);
     }
     
-    if (isset($_POST['location']) && isset($_POST['product'])) {
+    if (!empty($_POST['location']) && !empty($_POST['product'])) {
         $stmt = $conn->prepare(
             "SELECT `pn`.`name` AS `product_name`, `p`.`type`, `m`.`name` AS `manufacturer`, `lhp`.`in_stock`
             FROM `location_has_products` `lhp`

@@ -13,10 +13,6 @@
     <title>Home</title>
 </head>
 <body>
-
-    <pre><?php print_r($_SESSION['products']); ?></pre>
-    <pre><?php print_r($_POST); ?></pre>
-
     <div class="main-div">
         <nav class="flex-box align-items-center justify-content-space-between">
             <img class="img-s-s" src="./resources/img/nut_screwdriver.png" alt="logo icon">
