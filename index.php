@@ -81,11 +81,11 @@
                             echo "<p class='error'>".$_SESSION['error']."</p>";
                         }
 
-                        if (empty($_SESSION['products'])) {
+                        if (empty($_SESSION['products']) && empty($_SESSION['error'])) {
                             echo "<p>Er zijn geen resultaten gevonden.</p>";
                         }
 
-                        if (!empty($_SESSION['products'])) {
+                        if (!empty($_SESSION['products']) && empty($_SESSION['error'])) {
                     ?>
                     <table>
                         <tr>

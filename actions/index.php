@@ -4,6 +4,9 @@ $dbname = "tools_forever";
 $username = "root";
 $password = "";
 
+unset($_SESSION['error']);
+
+
 // gets locations
 try {
     $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
@@ -15,7 +18,7 @@ try {
     $result = $stmt->fetchAll();
 } catch (PDOException $e) {
     $_SESSION['error'] = 'Er is iets fout gegaan, probeer het later opnieuw!';
-    echo "Error : " . $e->getMessage();
+    //echo "Error : " . $e->getMessage();
 }
 $conn = null;
 
@@ -32,7 +35,7 @@ try {
 
     $result = $stmt->fetchAll();
 } catch (PDOException $e) {
-    // $_SESSION['error'] = 'Er is iets fout gegaan, probeer het later opnieuw!';
+    $_SESSION['error'] = 'Er is iets fout gegaan, probeer het later opnieuw!';
     //echo "Error : " . $e->getMessage();
 }
 $conn = null;
@@ -83,14 +86,10 @@ try {
 
     $result = $stmt->fetchAll();
 } catch (PDOException $e) {
-    //$_SESSION['error'] = 'Er is iets fout gegaan, probeer het later opnieuw!';
+    $_SESSION['error'] = 'Er is iets fout gegaan, probeer het later opnieuw!';
     //echo "Error : " . $e->getMessage();
 }
 $conn = null;
 
 $_SESSION['products'] = $result;
-
-
-unset($_SESSION['error']);
-// TODO: fix errors!
 ?>
