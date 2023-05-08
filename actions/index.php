@@ -14,8 +14,8 @@ try {
 
     $result = $stmt->fetchAll();
 } catch (PDOException $e) {
-    // $_SESSION['error'] = 'Er is iets fout gegaan, probeer het later opnieuw!';
-    //echo "Error : " . $e->getMessage();
+    $_SESSION['error'] = 'Er is iets fout gegaan, probeer het later opnieuw!';
+    echo "Error : " . $e->getMessage();
 }
 $conn = null;
 
@@ -91,6 +91,6 @@ $conn = null;
 $_SESSION['products'] = $result;
 
 
-//unset($_SESSION['error']);
+unset($_SESSION['error']);
 // TODO: fix errors!
 ?>

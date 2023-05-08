@@ -68,12 +68,6 @@
                     }
                     echo '</select>';
                 ?>
-
-                <?php
-                    if (isset($_SESSION['error'])) {
-                        echo "<p class='error'>".$_SESSION['error']."</p>";
-                    }
-                ?>
         
                 <input class="main-bt mt-25" type="submit" value="Zoeken">
             </form>
@@ -82,6 +76,17 @@
                     <h1>Voorraad overzicht</h1>
                 </div>
                 <div class="element element-s-l p-15">
+                    <?php
+                        if (isset($_SESSION['error'])) {
+                            echo "<p class='error'>".$_SESSION['error']."</p>";
+                        }
+
+                        if (empty($_SESSION['products'])) {
+                            echo "<p>Er zijn geen resultaten gevonden.</p>";
+                        }
+
+                        if (!empty($_SESSION['products'])) {
+                    ?>
                     <table>
                         <tr>
                             <th>Product</th>
@@ -103,6 +108,7 @@
                             }
                         ?>
                     </table>
+                    <?php } ?>
                 </div>
             </div>
         </div>
