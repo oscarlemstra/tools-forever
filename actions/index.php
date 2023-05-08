@@ -57,7 +57,6 @@ try {
         $stmt->execute([$_SESSION['user']['location_id']]);
     }
     
-    // TODO: fix this!
     if (!empty($_POST['location']) && empty($_POST['product'])) {
         $stmt = $conn->prepare(
             "SELECT `pn`.`name` AS `product_name`, `p`.`type`, `m`.`name` AS `manufacturer`, `lhp`.`in_stock`

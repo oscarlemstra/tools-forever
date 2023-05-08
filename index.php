@@ -18,10 +18,17 @@
             <img class="img-s-s" src="./resources/img/nut_screwdriver.png" alt="logo icon">
 
             <div>
-                <a class="nav-link" href="">Rapportages</a>
-                <a class="nav-link" href="">Producten</a>
-                <a class="nav-link" href="">Locaties</a>
-                <a class="nav-link" href="">Werknemers</a>
+                <?php
+                    if ((int) $_SESSION['user']['role_id'] >= 2) {
+                        echo '<a class="nav-link" href="">Rapportages</a>';
+                        echo '<a class="nav-link" href="">Producten</a>';
+                    }
+
+                    if ((int) $_SESSION['user']['role_id'] === 3) {
+                        echo '<a class="nav-link" href="">Locaties</a>';
+                        echo '<a class="nav-link" href="">Werknemers</a>';
+                    }
+                ?>
             </div>
         </nav>
         <div class="flex-box align-items-flex-start gap-20">
