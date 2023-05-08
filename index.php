@@ -57,7 +57,7 @@
 
                 <?php // a select element for prduct
                     echo '<select class="mb-10" id="product" name="product">';
-                    echo '<option value="">Product</option>';
+                    echo '<option value="">Alle Product</option>';
 
                     foreach ($_SESSION['product_names'] as $product_name) {
                         if ($product_name['id'] === $_POST['product']) {
