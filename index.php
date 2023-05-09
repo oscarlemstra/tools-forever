@@ -1,5 +1,7 @@
-<?php 
+<?php
     session_start();
+    $_SESSION['access'] = 'all';
+    require_once "./includes/user_validation.php";
     require_once "./actions/index.php";
 ?>
 
