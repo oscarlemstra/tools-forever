@@ -1,13 +1,14 @@
 * {
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 body {
     background-color: #F1E8AA;
-    /* background-color: peachpuff; */
 }
 
-.main-div { /* kan miss weg */
+.main-div {
+    width: 900px;
     margin: auto;
 }
 
@@ -27,15 +28,31 @@ body {
     font-weight: bold;
 }
 
+.main-bt {
+    background-color: hsla(12, 54%, 39%, 0.87);
+    border-radius: 5px;
+    color: white;
+    border: none;
+    padding: 10px 0px 10px 0px;
+    width: 100%;
+    font-weight: bold;
+}
+
 .element {
     background-color: #FFD185;
-    padding: 30px;
     border-radius: 10px;
-    width: fit-content;
+}
+
+.element-s-l {
+    width: 650px;
 }
 
 .element-s-m {
     width: 275px;
+}
+
+.element-s-s {
+    width: 175px;
 }
 
 .img-s-m {
@@ -43,11 +60,71 @@ body {
     height: 200px;
 }
 
-input {
+.img-s-s {
+    width: 50px;
+    height: 50px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #47525E;
+    padding: 10px;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.nav-link-selected {
+    color: white;
+    background-color: hsla(12, 54%, 39%, 0.87);
+    border-radius: 15px;
+}
+
+input, select {
     padding: 7px;
     border-radius: 5px;
     border: solid #8492A6 1px;
     width: 100%;
+}
+
+nav {
+    background-color: #FFD185;
+    padding: 10px;
+}
+
+h1 {
+    font-size: large;
+}
+
+
+
+/* table */
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    width: 20%;
+}
+
+tr th:last-child {
+    border-right: none;
+}
+
+tr td:last-child {
+    border-right: none;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+th, td {
+    border-bottom: solid #343F4B 1px;
+    border-right: solid #343F4B 2px;
+    padding: 5px;
+    font-size: smaller;
 }
 
 
@@ -58,8 +135,28 @@ input {
     margin-top: 25px;
 }
 
+.mt-45 {
+    margin-top: 45px;
+}
+
 .mb-25 {
     margin-bottom: 25px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.p-30 {
+    padding: 30px;
+}
+
+.p-15 {
+    padding: 15px;
+}
+
+.p-10 {
+    padding: 10px;
 }
 
 .h-vh-80 {
@@ -78,8 +175,20 @@ input {
     justify-content: center;
 }
 
+.justify-content-space-between {
+    justify-content: space-between;
+}
+
 .align-items-center {
     align-items: center;
+}
+
+.align-items-flex-start {
+    align-items: flex-start;
+}
+
+.gap-20 {
+    gap: 20px;
 }
 
 .gap-75 {

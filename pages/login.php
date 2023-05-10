@@ -13,7 +13,7 @@
     <div class="flex-box h-vh-80 justify-content-center align-items-center gap-75">
         <img class="img-s-m" src="../resources/img/nut_screwdriver.png" alt="logo icon">
         
-        <form class="element element-s-m" action="../actions/login.php" method="post">
+        <form class="element element-s-m p-30" action="../actions/login.php" method="post">
             <input class="mb-25" type="text" id="first_name" name="first_name" placeholder="Voornaam" autofocus required>
             
             <input class="mb-25" type="text" id="last_name" name="last_name" placeholder="Achternaam" required>
