@@ -3,7 +3,7 @@
     $_SESSION['url'] = __DIR__;
     $_SESSION['access'] = 'office';
     require_once "../includes/user_validation.php";
-    // require_once ""; // TODO: maak deze
+    require_once "../actions/products.php";
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +73,9 @@
                             <th>Product</th>
                             <th>Type</th>
                             <th>Fabriek</th>
-                            <th>In voorraad</th>
+                            <th>Inkoop prijs</th>
+                            <th>Verkoop prijs</th>
+                            <th>Voorraad</th>
                         </tr>
                         <?php // create's <tr> elements with the products data
                             foreach ($_SESSION['products'] as $product) {
