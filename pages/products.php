@@ -1,3 +1,98 @@
 <?php
-echo 'ofkeofme';
+    session_start();
+    $_SESSION['url'] = __DIR__;
+    $_SESSION['access'] = 'office';
+    require_once "../includes/user_validation.php";
+    // require_once ""; // TODO: maak deze
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../resources/styles/main.css">
+    <title>Producten</title>
+</head>
+<body>
+    <div class="main-div">
+        <nav class="flex-box align-items-center justify-content-space-between">
+            <img class="img-s-s" src="../resources/img/nut_screwdriver.png" alt="logo icon">
+
+            <div>
+                <?php
+                    if ((int) $_SESSION['user']['role_id'] >= 2) {
+                        echo '<a class="nav-link" href="">Rapportages</a>';
+                        echo '<a class="nav-link nav-link-selected" href="">Producten</a>';
+                    }
+
+                    if ((int) $_SESSION['user']['role_id'] === 3) {
+                        echo '<a class="nav-link" href="">Locaties</a>';
+                        echo '<a class="nav-link" href="">Werknemers</a>';
+                    }
+                ?>
+            </div>
+        </nav>
+        <div class="flex-box align-items-flex-start gap-20">
+            <form class="element element-s-s p-10 mt-45" action="" method="post">
+                <?php // a select element for prduct
+                    echo '<select class="mb-10" id="product" name="product">';
+                    echo '<option value="">Alle Product</option>';
+
+                    foreach ($_SESSION['product_names'] as $product_name) {
+                        if ($product_name['id'] === $_POST['product']) {
+                            echo '<option value="'.$product_name['id'].'" selected>'.$product_name['name'].'</option>';
+                        } else {
+                            echo '<option value="'.$product_name['id'].'">'.$product_name['name'].'</option>';
+                        }
+                    }
+                    echo '</select>';
+                ?>
+        
+                <input class="main-bt mt-25" type="submit" value="Zoeken">
+            </form>
+            <div>
+                <div>
+                    <h1>Producten overzicht</h1>
+                </div>
+                <div class="element element-s-l p-15">
+                    <?php
+                        if (isset($_SESSION['error'])) {
+                            echo "<p class='error'>".$_SESSION['error']."</p>";
+                        }
+
+                        if (empty($_SESSION['products']) && empty($_SESSION['error'])) {
+                            echo "<p>Er zijn geen resultaten gevonden.</p>";
+                        }
+
+                        if (!empty($_SESSION['products']) && empty($_SESSION['error'])) {
+                    ?>
+                    <table>
+                        <tr>
+                            <th>Product</th>
+                            <th>Type</th>
+                            <th>Fabriek</th>
+                            <th>In voorraad</th>
+                        </tr>
+                        <?php // create's <tr> elements with the products data
+                            foreach ($_SESSION['products'] as $product) {
+                                echo '<tr>';
+                                foreach ($product as $index => $value) {
+                                    if (gettype($index) === "string") {
+                                        echo '<td>'.$value.'</td>';
+                                    } else {
+                                        continue;
+                                    }
+                                }
+                                echo '</tr>';
+                            }
+                        ?>
+                    </table>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
