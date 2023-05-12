@@ -38,7 +38,7 @@
             <form class="element element-s-s p-10 mt-45" action="" method="post">
                 <?php // a select element for prduct
                     echo '<select class="mb-10" id="product" name="product">';
-                    echo '<option value="">Alle Product</option>';
+                    echo '<option value="all">Alle Product</option>';
 
                     foreach ($_SESSION['product_names'] as $product_name) {
                         if ($product_name['id'] === $_POST['product']) {
@@ -75,18 +75,19 @@
                             <th>Fabriek</th>
                             <th>Inkoop prijs</th>
                             <th>Verkoop prijs</th>
+                            <th>Bewerken</th>
                             <th>Voorraad</th>
                         </tr>
                         <?php // create's <tr> elements with the products data
                             foreach ($_SESSION['products'] as $product) {
                                 echo '<tr>';
-                                foreach ($product as $index => $value) {
-                                    if (gettype($index) === "string") {
-                                        echo '<td>'.$value.'</td>';
-                                    } else {
-                                        continue;
-                                    }
-                                }
+                                    echo '<td>'.$product['p_name'].'</td>';
+                                    echo '<td>'.$product['type'].'</td>';
+                                    echo '<td>'.$product['m_name'].'</td>';
+                                    echo '<td>'.$product['purchase_price'].'</td>';
+                                    echo '<td>'.$product['sell_price'].'</td>';
+                                    echo '<td>edit</td>';
+                                    echo '<td>stock</td>';
                                 echo '</tr>';
                             }
                         ?>

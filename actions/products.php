@@ -30,39 +30,23 @@ try {
     $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    if (empty($_POST)) {
-        $stmt = $conn->prepare( // TODO: deze moet ik fixen
-            "SELECT `pn`.`name` AS `product_name`, `p`.`type`, `m`.`name` AS `manufacturer`, `lhp`.`in_stock`
-            FROM `location_has_products` `lhp`
-            INNER JOIN `products` `p` ON `lhp`.`product_id` = `p`.`id`
+    if (empty($_POST) || $_POST['product'] === "all") {
+        $stmt = $conn->prepare(
+            "SELECT `pn`.`name` AS `p_name`, `p`.`type`, `m`.`name` AS `m_name`, `p`.`purchase_price`, `p`.`sell_price`, `p`.`id`
+            FROM `products` `p`
             INNER JOIN `product_names` `pn` ON `p`.`product_name_id` = `pn`.`id`
             INNER JOIN `manufacturers` `m` ON `p`.`manufacturer_id` = `m`.`id`"
         );
         $stmt->execute();
-    }
-    
-    if (!empty($_POST['location']) && empty($_POST['product'])) {
+    } else {
         $stmt = $conn->prepare(
-            "SELECT `pn`.`name` AS `product_name`, `p`.`type`, `m`.`name` AS `manufacturer`, `lhp`.`in_stock`
-            FROM `location_has_products` `lhp`
-            INNER JOIN `products` `p` ON `lhp`.`product_id` = `p`.`id`
+            "SELECT `pn`.`name` AS `p_name`, `p`.`type`, `m`.`name` AS `m_name`, `p`.`purchase_price`, `p`.`sell_price`, `p`.`id`
+            FROM `products` `p`
             INNER JOIN `product_names` `pn` ON `p`.`product_name_id` = `pn`.`id`
             INNER JOIN `manufacturers` `m` ON `p`.`manufacturer_id` = `m`.`id`
-            WHERE `lhp`.`location_id` = ?"
+            WHERE `p`.`product_name_id` = ?"
         );
-        $stmt->execute([$_POST['location']]);
-    }
-    
-    if (!empty($_POST['location']) && !empty($_POST['product'])) {
-        $stmt = $conn->prepare(
-            "SELECT `pn`.`name` AS `product_name`, `p`.`type`, `m`.`name` AS `manufacturer`, `lhp`.`in_stock`
-            FROM `location_has_products` `lhp`
-            INNER JOIN `products` `p` ON `lhp`.`product_id` = `p`.`id`
-            INNER JOIN `product_names` `pn` ON `p`.`product_name_id` = `pn`.`id`
-            INNER JOIN `manufacturers` `m` ON `p`.`manufacturer_id` = `m`.`id`
-            WHERE `lhp`.`location_id` = ? AND `p`.`product_name_id` = ?"
-        );
-        $stmt->execute([$_POST['location'], $_POST['product']]);
+        $stmt->execute([$_POST['product']]);
     }
 
     $result = $stmt->fetchAll();
