@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="../resources/styles/main.css">
     <title>Producten</title>
 </head>
@@ -56,8 +57,11 @@
                 <input class="main-bt mt-25" type="submit" value="Zoeken">
             </form>
             <div>
-                <div>
+                <div class="flex-box justify-content-space-between align-items-center">
                     <h1>Producten overzicht</h1>
+                    <a class="flex-box icon-link" href="">
+                        <i class="material-icons plus-icon">add</i>
+                    </a>
                 </div>
                 <div class="element element-s-l p-15">
                     <?php

@@ -95,6 +95,15 @@ h1 {
     font-size: large;
 }
 
+.icon-link {
+    text-decoration: none;
+}
+
+.plus-icon {
+    color: black;
+    font-size: 28px;
+}
+
 
 
 /* table */
