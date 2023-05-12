@@ -18,7 +18,10 @@
 <body>
     <div class="main-div">
         <nav class="flex-box align-items-center justify-content-space-between">
-            <img class="img-s-s" src="../resources/img/nut_screwdriver.png" alt="logo icon">
+            <div class="flex-box align-items-center gap-10">
+                <img class="img-s-s" src="../resources/img/nut_screwdriver.png" alt="logo icon">
+                <a class="nav-link" href="../index.php">Home</a>
+            </div>
 
             <div>
                 <?php
