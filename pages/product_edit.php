@@ -48,9 +48,9 @@
                         }
                     ?>
 
-                    <form action="">
-                        <div class="form-element">
-                            <div>
+                    <form class="flex-box gap-40" action="">
+                        <div class="form-section flex-box flex-direction-column gap-30">
+                            <div class="flex-box flex-direction-column gap-5">
                                 <label for="product_name">Product naam</label>
                                 <select id="product_name" name="product_name"  autofocus required>
                                     <option value="">product naam</option>
@@ -59,11 +59,11 @@
                                     <option value="www">quiehd</option>
                                 </select>
                             </div>
-                            <div>
+                            <div class="flex-box flex-direction-column gap-5">
                                 <label for="type">Type</label>
                                 <input type="text" id="type" name="type" placeholder="type" required>
                             </div>
-                            <div>
+                            <div class="flex-box flex-direction-column gap-5">
                                 <label for="sell_price">Verkoopprijs</label>
                                 <input type="number" id="sell_price" name="sell_price" min="0.00" max="99.99" step="0.01" placeholder="€ 0,00" required>
                             </div>
@@ -71,8 +71,9 @@
                                 <input class="main-bt mt-25" type="submit" value="Toepassen">
                             </div>
                         </div>
-                        <div class="form-element">
-                            <div>
+
+                        <div class="form-section flex-box flex-direction-column gap-30">
+                            <div class="flex-box flex-direction-column gap-5">
                                 <label for="manufacturer">Fabriekant</label>
                                 <select id="manufacturer" name="manufacturer"  required>
                                     <option value="">fabriekant</option>
@@ -81,7 +82,7 @@
                                     <option value="www">quiehd</option>
                                 </select>
                             </div>
-                            <div>
+                            <div class="flex-box flex-direction-column gap-5">
                                 <label for="purchase_price">Inkoopprijs</label>
                                 <input type="number" id="purchase_price" name="purchase_price" min="0.00" max="99.99" step="0.01" placeholder="€ 0,00" required>
                             </div>

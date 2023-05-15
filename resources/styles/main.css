@@ -119,8 +119,8 @@ a {
     font-size: 28px;
 }
 
-.form-element {
-    width: 40%;
+.form-section {
+    width: 35%;
 }
 
 
@@ -199,6 +199,10 @@ th, td {
     display: flex;
 }
 
+.flex-direction-column {
+    flex-direction: column;
+}
+
 .justify-content-center {
     justify-content: center;
 }
@@ -215,12 +219,24 @@ th, td {
     align-items: flex-start;
 }
 
+.gap-5 {
+    gap: 5px;
+}
+
 .gap-10 {
     gap: 10px;
 }
 
 .gap-20 {
     gap: 20px;
+}
+
+.gap-30 {
+    gap: 30px;
+}
+
+.gap-40 {
+    gap: 40px;
 }
 
 .gap-75 {
