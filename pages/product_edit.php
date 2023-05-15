@@ -60,11 +60,11 @@
                         }
                     ?>
 
-                    <form class="flex-box gap-40" action="">
+                    <form class="flex-box gap-40" action="../actions/product_edit.php" method="post">
                         <div class="form-section flex-box flex-direction-column gap-30">
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="product_name">Product naam</label>
-                                <select id="product_name" name="product_name"  autofocus required>
+                                <select id="product_name" name="product_name" autofocus required>
                                     <option value="">product naam</option>
                                     <option value="www">edmiefmi</option>
                                     <option value="www">plscoc</option>
@@ -93,7 +93,7 @@
                         <div class="form-section flex-box flex-direction-column gap-30">
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="manufacturer">Fabriekant</label>
-                                <select id="manufacturer" name="manufacturer"  required>
+                                <select id="manufacturer" name="manufacturer" required>
                                     <option value="">fabriekant</option>
                                     <option value="www">edmiefmi</option>
                                     <option value="www">plscoc</option>
