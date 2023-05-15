@@ -59,7 +59,7 @@
             <div>
                 <div class="flex-box justify-content-space-between align-items-center">
                     <h1>Producten overzicht</h1>
-                    <a class="flex-box icon-link" href="">
+                    <a class="flex-box" href="">
                         <i class="material-icons plus-icon">add</i>
                     </a>
                 </div>
@@ -93,8 +93,12 @@
                                     echo '<td>'.$product['m_name'].'</td>';
                                     echo '<td>'.$product['purchase_price'].'</td>';
                                     echo '<td>'.$product['sell_price'].'</td>';
-                                    echo '<td>edit</td>';
-                                    echo '<td>stock</td>';
+                                    echo '<td><a class="text-link" href="">Bewerken</a></td>';
+                                    echo '<td>';
+                                        echo '<a href=""><i class="material-icons icon-link">mode_edit</i></a>';
+                                        echo '<a href=""><i class="material-icons icon-link">delete</i></a>';
+                                        echo '<a href=""><i class="material-icons icon-link">add</i></a>';
+                                    echo '</td>';
                                 echo '</tr>';
                             }
                         ?>
