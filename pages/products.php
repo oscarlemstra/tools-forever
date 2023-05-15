@@ -59,7 +59,7 @@
             <div>
                 <div class="flex-box justify-content-space-between align-items-center">
                     <h1>Producten overzicht</h1>
-                    <a class="flex-box" href="">
+                    <a class="flex-box" href="./product_edit.php">
                         <i class="material-icons plus-icon">add</i>
                     </a>
                 </div>

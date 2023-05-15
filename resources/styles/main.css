@@ -119,6 +119,10 @@ a {
     font-size: 28px;
 }
 
+.form-element {
+    width: 40%;
+}
+
 
 
 /* table */
