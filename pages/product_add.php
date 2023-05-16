@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../resources/styles/main.css">
-    <title>Product bewerken</title>
+    <title>Product toevoegen</title>
 </head>
 <body>
     <div class="main-div">
@@ -39,7 +39,7 @@
         <div class="flex-box justify-content-center">
             <div>
                 <div>
-                    <h1>Product bewerken</h1>
+                    <h1>Product toevoegen</h1>
                 </div>
                 <div class="element element-s-l p-15">
                     <?php
@@ -68,7 +68,7 @@
                                 <input type="number" id="sell_price" name="sell_price" min="0.00" max="99.99" step="0.01" placeholder="€ 0,00" required>
                             </div>
                             <div>
-                                <input class="main-bt mt-25" type="submit" value="Toepassen">
+                                <input class="main-bt mt-25" type="submit" value="Toevoegen">
                             </div>
                         </div>
 
