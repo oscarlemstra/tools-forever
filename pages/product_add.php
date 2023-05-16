@@ -48,7 +48,7 @@
                         }
                     ?>
 
-                    <form class="flex-box gap-40" action="../actions/product_edit.php" method="post">
+                    <form class="flex-box gap-40" action="../actions/product_add.php" method="post">
                         <div class="form-section flex-box flex-direction-column gap-30">
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="product_name">Product naam</label>
