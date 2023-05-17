@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $dbname = "tools_forever";
 $username = "root";
@@ -13,7 +15,7 @@ try {
     $conn->beginTransaction();
 
     $stmt = $conn->prepare(
-        "INSERT INTO `productsx`
+        "INSERT INTO `products`
         (`product_name_id`, `manufacturer_id`, `type`, `purchase_price`, `sell_price`)
         VALUES (?, ?, ?, ?, ?)"
     );
@@ -29,11 +31,10 @@ $conn = null;
 
 
 if (!empty($_SESSION['error'])) {
-    header('Location: ../pages/product_add.php?error=true');
+    header('Location: ../pages/product_add.php');
     exit();
 }
 
-unset($_SESSION['error']);
 header('Location: ../pages/products.php');
 exit();
 ?>

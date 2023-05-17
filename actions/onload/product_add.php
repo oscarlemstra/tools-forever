@@ -4,10 +4,6 @@ $dbname = "tools_forever";
 $username = "root";
 $password = "";
 
-if (empty($_GET['error'])) { // TODO: fix error melding!
-    unset($_SESSION['error']);
-}
-
 
 // gets product_names
 try {
