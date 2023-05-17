@@ -47,6 +47,7 @@
                         if (isset($_SESSION['error'])) {
                             echo "<p class='error mb-15'>".$_SESSION['error']."</p>";
                         }
+                        // TODO: voeg een succes melding toe
                     ?>
 
                     <form class="flex-box gap-40" action="../actions/product_add.php" method="post">
