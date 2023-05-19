@@ -3,6 +3,7 @@
     $_SESSION['url'] = __DIR__;
     $_SESSION['access'] = 'office';
     require_once "../includes/user_validation.php";
+    require_once "../actions/onload/product_edit.php";
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +45,7 @@
                 <div class="element element-s-l p-15">
                     <?php
                         if (isset($_SESSION['error'])) {
-                            echo "<p class='error'>".$_SESSION['error']."</p>";
+                            echo "<p class='error mb-15'>".$_SESSION['error']."</p>";
                         }
                     ?>
 
@@ -54,18 +55,24 @@
                                 <label for="product_name">Product naam</label>
                                 <select id="product_name" name="product_name" autofocus required>
                                     <option value="">product naam</option>
-                                    <option value="www">edmiefmi</option>
-                                    <option value="www">plscoc</option>
-                                    <option value="www">quiehd</option>
+                                    <?php // loads all the options for product name
+                                        foreach ($_SESSION['product_names'] as $product_name) {
+                                            if ($product_name['id'] === $_SESSION['product']['product_name_id']) {
+                                                echo '<option value="'.$product_name['id'].'" selected>'.$product_name['name'].'</option>';
+                                            } else {
+                                                echo '<option value="'.$product_name['id'].'">'.$product_name['name'].'</option>';
+                                            }
+                                        }
+                                    ?>
                                 </select>
                             </div>
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="type">Type</label>
-                                <input type="text" id="type" name="type" placeholder="type" required>
+                                <input type="text" id="type" name="type" value="<?php echo $_SESSION['product']['type']; ?>" placeholder="type" required>
                             </div>
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="sell_price">Verkoopprijs</label>
-                                <input type="number" id="sell_price" name="sell_price" min="0.00" max="99.99" step="0.01" placeholder="€ 0,00" required>
+                                <input type="number" id="sell_price" name="sell_price" value="<?php echo $_SESSION['product']['sell_price']; ?>" min="0.00" max="99999.99" step="0.01" placeholder="€ 0,00" required>
                             </div>
                             <div>
                                 <input class="main-bt mt-25" type="submit" value="Toepassen">
@@ -77,14 +84,20 @@
                                 <label for="manufacturer">Fabriekant</label>
                                 <select id="manufacturer" name="manufacturer" required>
                                     <option value="">fabriekant</option>
-                                    <option value="www">edmiefmi</option>
-                                    <option value="www">plscoc</option>
-                                    <option value="www">quiehd</option>
+                                    <?php // loads all the options for manufacturer name
+                                        foreach ($_SESSION['manufacturer_names'] as $manufacturer_name) {
+                                            if ($manufacturer_name['id'] === $_SESSION['product']['manufacturer_id']) {
+                                                echo '<option value="'.$manufacturer_name['id'].'" selected>'.$manufacturer_name['name'].'</option>';
+                                            } else {
+                                                echo '<option value="'.$manufacturer_name['id'].'">'.$manufacturer_name['name'].'</option>';
+                                            }
+                                        }
+                                    ?>
                                 </select>
                             </div>
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="purchase_price">Inkoopprijs</label>
-                                <input type="number" id="purchase_price" name="purchase_price" min="0.00" max="99.99" step="0.01" placeholder="€ 0,00" required>
+                                <input type="number" id="purchase_price" name="purchase_price" value="<?php echo $_SESSION['product']['purchase_price']; ?>" min="0.00" max="99999.99" step="0.01" placeholder="€ 0,00" required>
                             </div>
                         </div>
                     </form>
@@ -94,3 +107,5 @@
     </div>
 </body>
 </html>
+
+<?php unset($_SESSION['error']); ?>

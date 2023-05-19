@@ -97,7 +97,7 @@
                                     echo '<td>'.$product['m_name'].'</td>';
                                     echo '<td>'.$product['purchase_price'].'</td>';
                                     echo '<td>'.$product['sell_price'].'</td>';
-                                    echo '<td><a class="text-link" href="./product_edit.php">Bewerken</a></td>';
+                                    echo '<td><a class="text-link" href="./product_edit.php?product='.$product['id'].'">Bewerken</a></td>';
                                     echo '<td>';
                                         echo '<a href=""><i class="material-icons icon-link">mode_edit</i></a>';
                                         echo '<a href=""><i class="material-icons icon-link">delete</i></a>';
