@@ -35,6 +35,7 @@ if (!empty($_SESSION['error'])) {
     exit();
 }
 
+$_SESSION['success'] = 'Het product is succesvol toegevoegd!';
 header('Location: ../pages/products.php');
 exit();
 ?>

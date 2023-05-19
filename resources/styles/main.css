@@ -18,6 +18,16 @@ body {
     margin: 0;
 }
 
+.success {
+    color: white;
+    font-weight: bold;
+    margin: 0;
+    padding: 5px;
+    background: limegreen;
+    border-radius: 5px;
+    width: fit-content;
+}
+
 .login-bt {
     background-color: #13CE66;
     border-radius: 5px;

@@ -65,6 +65,10 @@
                 </div>
                 <div class="element element-s-l p-15">
                     <?php
+                        if (isset($_SESSION['success'])) {
+                            echo "<p class='success mb-15'>".$_SESSION['success']."</p>";
+                        }
+
                         if (isset($_SESSION['error'])) {
                             echo "<p class='error'>".$_SESSION['error']."</p>";
                         }
@@ -110,3 +114,5 @@
     </div>
 </body>
 </html>
+
+<?php unset($_SESSION['success']); ?>
