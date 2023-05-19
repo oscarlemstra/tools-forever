@@ -20,7 +20,7 @@ try {
     $conn->commit();
 } catch (PDOException $e) {
     $conn->rollBack();
-    $_SESSION['error'] = 'Er is iets fout gegaan, probeer het later opnieuw!';
+    $_SESSION['error'] = 'Er is iets fout gegaan, probeer het later opnieuw! <br><br> Als er nog voorraad is kan je het product niet verwijderen!';
     //echo "Error : " . $e->getMessage();
 }
 $conn = null;
