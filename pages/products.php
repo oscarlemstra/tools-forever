@@ -58,7 +58,7 @@
             </form>
             <div>
                 <div class="flex-box justify-content-space-between align-items-center">
-                    <h1>Producten overzicht</h1><!-- TODO: voeg hier locatie toe van gebruiker -->
+                    <h1>Producten overzicht - <?php echo $_SESSION['worker_location']; ?></h1>
                     <a class="flex-box" href="./product_add.php">
                         <i class="material-icons plus-icon">add</i>
                     </a>
