@@ -19,7 +19,7 @@ try {
         (`product_name_id`, `manufacturer_id`, `type`, `purchase_price`, `sell_price`)
         VALUES (?, ?, ?, ?, ?)"
     );
-    $stmt->execute([$_POST['product_name'], $_POST['manufacturer'], $_POST['type'], $_POST['purchase_price'], $_POST['sell_price'],]);
+    $stmt->execute([$_POST['product_name'], $_POST['manufacturer'], $_POST['type'], $_POST['purchase_price'], $_POST['sell_price']]);
 
     $conn->commit();
 } catch (PDOException $e) {
