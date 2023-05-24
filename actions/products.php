@@ -50,21 +50,24 @@ try {
 
     if (empty($_POST) || $_POST['product'] === "all") {
         $stmt = $conn->prepare(
-            "SELECT `pn`.`name` AS `p_name`, `p`.`type`, `m`.`name` AS `m_name`, `p`.`purchase_price`, `p`.`sell_price`, `p`.`id`
-            FROM `products` `p`
-            INNER JOIN `product_names` `pn` ON `p`.`product_name_id` = `pn`.`id`
-            INNER JOIN `manufacturers` `m` ON `p`.`manufacturer_id` = `m`.`id`"
-        );
-        $stmt->execute();
-    } else {
-        $stmt = $conn->prepare(
-            "SELECT `pn`.`name` AS `p_name`, `p`.`type`, `m`.`name` AS `m_name`, `p`.`purchase_price`, `p`.`sell_price`, `p`.`id`
+            "SELECT `pn`.`name` AS `p_name`, `p`.`type`, `m`.`name` AS `m_name`, `p`.`purchase_price`, `p`.`sell_price`, `p`.`id`, `lhp`.`in_stock`, `lhp`.`min_stock`
             FROM `products` `p`
             INNER JOIN `product_names` `pn` ON `p`.`product_name_id` = `pn`.`id`
             INNER JOIN `manufacturers` `m` ON `p`.`manufacturer_id` = `m`.`id`
-            WHERE `p`.`product_name_id` = ?"
+            INNER JOIN `location_has_products` `lhp` ON `p`.`id` = `lhp`.`product_id`
+            WHERE `lhp`.`location_id` = ?"
         );
-        $stmt->execute([$_POST['product']]);
+        $stmt->execute([$_SESSION['user']['location_id']]);
+    } else {
+        $stmt = $conn->prepare(
+            "SELECT `pn`.`name` AS `p_name`, `p`.`type`, `m`.`name` AS `m_name`, `p`.`purchase_price`, `p`.`sell_price`, `p`.`id`, `lhp`.`in_stock`, `lhp`.`min_stock`
+            FROM `products` `p`
+            INNER JOIN `product_names` `pn` ON `p`.`product_name_id` = `pn`.`id`
+            INNER JOIN `manufacturers` `m` ON `p`.`manufacturer_id` = `m`.`id`
+            INNER JOIN `location_has_products` `lhp` ON `p`.`id` = `lhp`.`product_id`
+            WHERE `p`.`product_name_id` = ? AND `lhp`.`location_id` = ?"
+        );
+        $stmt->execute([$_POST['product'], $_SESSION['user']['location_id']]);
     }
 
     $result = $stmt->fetchAll();

@@ -55,7 +55,7 @@
                         }
                     ?>
 
-                    <form class="flex-box gap-40" action="../actions/product_edit.php" method="post">
+                    <form class="flex-box gap-40 flex-wrap" action="../actions/product_edit.php" method="post">
                         <div class="form-section flex-box flex-direction-column gap-30">
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="product_name">Product naam</label>
@@ -80,9 +80,6 @@
                                 <label for="sell_price">Verkoopprijs</label>
                                 <input type="number" id="sell_price" name="sell_price" value="<?php echo $_SESSION['product']['sell_price']; ?>" min="0.00" max="99999.99" step="0.01" placeholder="€ 0,00" required>
                             </div>
-                            <div>
-                                <input class="main-bt mt-25" type="submit" value="Toepassen">
-                            </div>
                         </div>
 
                         <div class="form-section flex-box flex-direction-column gap-30">
@@ -104,6 +101,26 @@
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="purchase_price">Inkoopprijs</label>
                                 <input type="number" id="purchase_price" name="purchase_price" value="<?php echo $_SESSION['product']['purchase_price']; ?>" min="0.00" max="99999.99" step="0.01" placeholder="€ 0,00" required>
+                            </div>
+                        </div>
+
+                        <div class="form-section flex-box flex-direction-column gap-30">
+                            <div class="flex-box flex-direction-column gap-5">
+                                <label for="in_stock">In voorraad</label>
+                                <input type="number" id="in_stock" name="in_stock" value="<?php echo $_SESSION['product_stock']['in_stock']; ?>" min="0" max="99999" step="1" placeholder="in voorraad" required>
+                            </div>
+                        </div>
+
+                        <div class="form-section flex-box flex-direction-column gap-30">
+                            <div class="flex-box flex-direction-column gap-5">
+                                <label for="min_stock">Minimum voorraad</label>
+                                <input type="number" id="min_stock" name="min_stock" value="<?php echo $_SESSION['product_stock']['min_stock']; ?>" min="0" max="99999" step="1" placeholder="minimum voorraad" required>
+                            </div>
+                        </div>
+
+                        <div class="form-section flex-box flex-direction-column gap-30">
+                            <div>
+                                <input class="main-bt mt-25" type="submit" value="Toepassen">
                             </div>
                         </div>
                     </form>

@@ -100,8 +100,8 @@
                                     echo '<td>'.$product['m_name'].'</td>';
                                     echo '<td>'.$product['purchase_price'].'</td>';
                                     echo '<td>'.$product['sell_price'].'</td>';
-                                    echo '<td>0</td>';
-                                    echo '<td>0</td>';
+                                    echo '<td>'.$product['in_stock'].'</td>';
+                                    echo '<td>'.$product['min_stock'].'</td>';
                                     echo '<td><a class="text-link" href="./product_edit.php?product='.$product['id'].'">Bewerken</a></td>';
                                 echo '</tr>';
                             }
