@@ -82,30 +82,34 @@
                         if (!empty($_SESSION['products']) && empty($_SESSION['error'])) {
                     ?>
                     <table>
-                        <tr>
-                            <th>Product</th>
-                            <th>Type</th>
-                            <th>Fabriek</th>
-                            <th>Inkoop prijs</th>
-                            <th>Verkoop prijs</th>
-                            <th>In voorraad</th>
-                            <th>Minimum voorraad</th>
-                            <th>Bewerken</th>
-                        </tr>
-                        <?php // create's <tr> elements with the products data
-                            foreach ($_SESSION['products'] as $product) {
-                                echo '<tr>';
-                                    echo '<td>'.$product['p_name'].'</td>';
-                                    echo '<td>'.$product['type'].'</td>';
-                                    echo '<td>'.$product['m_name'].'</td>';
-                                    echo '<td>'.$product['purchase_price'].'</td>';
-                                    echo '<td>'.$product['sell_price'].'</td>';
-                                    echo '<td>'.$product['in_stock'].'</td>';
-                                    echo '<td>'.$product['min_stock'].'</td>';
-                                    echo '<td><a class="text-link" href="./product_edit.php?product='.$product['id'].'">Bewerken</a></td>';
-                                echo '</tr>';
-                            }
-                        ?>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Type</th>
+                                <th>Fabriek</th>
+                                <th>Inkoop prijs</th>
+                                <th>Verkoop prijs</th>
+                                <th>In voorraad</th>
+                                <th>Minimum voorraad</th>
+                                <th>Bewerken</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php // create's <tr> elements with the products data
+                                foreach ($_SESSION['products'] as $product) {
+                                    echo '<tr>';
+                                        echo '<td>'.$product['p_name'].'</td>';
+                                        echo '<td>'.$product['type'].'</td>';
+                                        echo '<td>'.$product['m_name'].'</td>';
+                                        echo '<td>'.$product['purchase_price'].'</td>';
+                                        echo '<td>'.$product['sell_price'].'</td>';
+                                        echo '<td>'.$product['in_stock'].'</td>';
+                                        echo '<td>'.$product['min_stock'].'</td>';
+                                        echo '<td><a class="text-link" href="./product_edit.php?product='.$product['id'].'">Bewerken</a></td>';
+                                    echo '</tr>';
+                                }
+                            ?>
+                        </tbody>
                     </table>
                     <?php } ?>
                 </div>

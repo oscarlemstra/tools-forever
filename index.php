@@ -94,25 +94,29 @@
                         if (!empty($_SESSION['products']) && empty($_SESSION['error'])) {
                     ?>
                     <table>
-                        <tr>
-                            <th>Product</th>
-                            <th>Type</th>
-                            <th>Fabriek</th>
-                            <th>In voorraad</th>
-                        </tr>
-                        <?php // create's <tr> elements with the products data
-                            foreach ($_SESSION['products'] as $product) {
-                                echo '<tr>';
-                                foreach ($product as $index => $value) {
-                                    if (gettype($index) === "string") {
-                                        echo '<td>'.$value.'</td>';
-                                    } else {
-                                        continue;
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Type</th>
+                                <th>Fabriek</th>
+                                <th>In voorraad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php // create's <tr> elements with the products data
+                                foreach ($_SESSION['products'] as $product) {
+                                    echo '<tr>';
+                                    foreach ($product as $index => $value) {
+                                        if (gettype($index) === "string") {
+                                            echo '<td>'.$value.'</td>';
+                                        } else {
+                                            continue;
+                                        }
                                     }
+                                    echo '</tr>';
                                 }
-                                echo '</tr>';
-                            }
-                        ?>
+                            ?>
+                        </tbody>
                     </table>
                     <?php } ?>
                 </div>

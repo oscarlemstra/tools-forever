@@ -154,6 +154,10 @@ th {
     width: 1%;
 }
 
+tbody tr:hover {
+    background-color: #ffe2b3;
+}
+
 tr th:last-child {
     border-right: none;
 }
