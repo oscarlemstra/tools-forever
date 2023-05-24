@@ -59,9 +59,11 @@
             <div>
                 <div class="flex-box justify-content-space-between align-items-center">
                     <h1>Producten overzicht - <?php echo $_SESSION['worker_location']; ?></h1>
-                    <a class="flex-box" href="./product_add.php">
-                        <i class="material-icons plus-icon">add</i>
-                    </a>
+                    <?php if ((int) $_SESSION['user']['role_id'] === 3) { ?>
+                        <a class="flex-box" href="./product_add.php">
+                            <i class="material-icons plus-icon">add</i>
+                        </a>
+                    <?php } ?>
                 </div>
                 <div class="element element-s-l p-15">
                     <?php
@@ -86,8 +88,9 @@
                             <th>Fabriek</th>
                             <th>Inkoop prijs</th>
                             <th>Verkoop prijs</th>
+                            <th>In voorraad</th>
+                            <th>Minimum voorraad</th>
                             <th>Bewerken</th>
-                            <th>Voorraad</th>
                         </tr>
                         <?php // create's <tr> elements with the products data
                             foreach ($_SESSION['products'] as $product) {
@@ -97,12 +100,9 @@
                                     echo '<td>'.$product['m_name'].'</td>';
                                     echo '<td>'.$product['purchase_price'].'</td>';
                                     echo '<td>'.$product['sell_price'].'</td>';
+                                    echo '<td>0</td>';
+                                    echo '<td>0</td>';
                                     echo '<td><a class="text-link" href="./product_edit.php?product='.$product['id'].'">Bewerken</a></td>';
-                                    echo '<td>';
-                                        echo '<a href=""><i class="material-icons icon-link">mode_edit</i></a>';
-                                        echo '<a href=""><i class="material-icons icon-link">delete</i></a>';
-                                        echo '<a href=""><i class="material-icons icon-link">add</i></a>';
-                                    echo '</td>';
                                 echo '</tr>';
                             }
                         ?>

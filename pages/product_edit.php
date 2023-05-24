@@ -42,9 +42,11 @@
             <div>
                 <div class="flex-box justify-content-space-between align-items-center">
                     <h1>Product bewerken</h1>
-                    <a class="flex-box" href="../actions/product_del.php">
-                        <i class="material-icons del-icon">delete</i>
-                    </a>
+                    <?php if ((int) $_SESSION['user']['role_id'] === 3) { ?>
+                        <a class="flex-box" href="../actions/product_del.php">
+                            <i class="material-icons del-icon">delete</i>
+                        </a>
+                    <?php } ?>
                 </div>
                 <div class="element element-s-l p-15">
                     <?php
