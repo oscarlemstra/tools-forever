@@ -59,7 +59,7 @@
                         <div class="form-section flex-box flex-direction-column gap-30">
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="product_name">Product naam</label>
-                                <select id="product_name" name="product_name" autofocus required>
+                                <select id="product_name" name="product_name" autofocus required <?php require('../includes/input_disabled_check.php'); ?>>
                                     <option value="">product naam</option>
                                     <?php // loads all the options for product name
                                         foreach ($_SESSION['product_names'] as $product_name) {
@@ -74,18 +74,18 @@
                             </div>
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="type">Type</label>
-                                <input type="text" id="type" name="type" value="<?php echo $_SESSION['product']['type']; ?>" placeholder="type" required>
+                                <input type="text" id="type" name="type" value="<?php echo $_SESSION['product']['type']; ?>" placeholder="type" required <?php require('../includes/input_disabled_check.php'); ?>>
                             </div>
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="sell_price">Verkoopprijs</label>
-                                <input type="number" id="sell_price" name="sell_price" value="<?php echo $_SESSION['product']['sell_price']; ?>" min="0.00" max="99999.99" step="0.01" placeholder="€ 0,00" required>
+                                <input type="number" id="sell_price" name="sell_price" value="<?php echo $_SESSION['product']['sell_price']; ?>" min="0.00" max="99999.99" step="0.01" placeholder="€ 0,00" required <?php require('../includes/input_disabled_check.php'); ?>>
                             </div>
                         </div>
 
                         <div class="form-section flex-box flex-direction-column gap-30">
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="manufacturer">Fabriekant</label>
-                                <select id="manufacturer" name="manufacturer" required>
+                                <select id="manufacturer" name="manufacturer" required <?php require('../includes/input_disabled_check.php'); ?>>
                                     <option value="">fabriekant</option>
                                     <?php // loads all the options for manufacturer name
                                         foreach ($_SESSION['manufacturer_names'] as $manufacturer_name) {
@@ -100,7 +100,7 @@
                             </div>
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="purchase_price">Inkoopprijs</label>
-                                <input type="number" id="purchase_price" name="purchase_price" value="<?php echo $_SESSION['product']['purchase_price']; ?>" min="0.00" max="99999.99" step="0.01" placeholder="€ 0,00" required>
+                                <input type="number" id="purchase_price" name="purchase_price" value="<?php echo $_SESSION['product']['purchase_price']; ?>" min="0.00" max="99999.99" step="0.01" placeholder="€ 0,00" required <?php require('../includes/input_disabled_check.php'); ?>>
                             </div>
                         </div>
 

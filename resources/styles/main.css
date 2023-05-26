@@ -95,6 +95,12 @@ input, select {
     width: 100%;
 }
 
+input:disabled, select:disabled {
+    background-color: #e6e6e6;
+    color: grey;
+    opacity: 100%;
+}
+
 nav {
     background-color: #FFD185;
     padding: 10px;
