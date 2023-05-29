@@ -26,7 +26,7 @@
             <div>
                 <?php
                     if ((int) $_SESSION['user']['role_id'] >= 2) {
-                        echo '<a class="nav-link" href="">Rapportages</a>';
+                        echo '<a class="nav-link" href="./reports.php">Rapportages</a>';
                         echo '<a class="nav-link nav-link-selected" href="./products.php">Producten</a>';
                     }
 
