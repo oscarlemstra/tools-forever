@@ -3,7 +3,7 @@
     $_SESSION['url'] = __DIR__;
     $_SESSION['access'] = 'office';
     require_once "../includes/user_validation.php";
-    // require_once "../actions/reports.php";
+    require_once "../actions/reports.php";
 ?>
 
 <!DOCTYPE html>
@@ -83,33 +83,9 @@
                         }
 
                         if (!empty($_SESSION['report']) && empty($_SESSION['error'])) {
+                            include '../includes/report_tables/total_stock.php';
+                        }
                     ?>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Type</th>
-                                <th>Fabriek</th>
-                                <th>In voorraad</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php // create's <tr> elements with the report data
-                                foreach ($_SESSION['report'] as $report) {
-                                    echo '<tr>';
-                                    foreach ($report as $index => $value) {
-                                        if (gettype($index) === "string") {
-                                            echo '<td>'.$value.'</td>';
-                                        } else {
-                                            continue;
-                                        }
-                                    }
-                                    echo '</tr>';
-                                }
-                            ?>
-                        </tbody>
-                    </table>
-                    <?php } ?>
                 </div>
             </div>
         </div>
