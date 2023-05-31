@@ -46,7 +46,19 @@ try {
             }
             break;
         case "stock_value":
-            echo "<h1>Rapportage - Voorraad waarde</h1>";
+            foreach ($_SESSION['locations'] as $location) {
+                $stmt = $conn->prepare(
+                    "SELECT `pn`.`name` AS `p_name`, `p`.`type`, `m`.`name` AS `m_name`, `lhp`.`in_stock`, `p`.`purchase_price`, `p`.`purchase_price` * `lhp`.`in_stock` AS `total_purchase_price_value`, `p`.`sell_price` * `lhp`.`in_stock` AS `total_sell_price_value`, `lhp`.`location_id`
+                    FROM `products` `p`
+                    INNER JOIN `product_names` `pn` ON `p`.`product_name_id` = `pn`.`id`
+                    INNER JOIN `manufacturers` `m` ON `p`.`manufacturer_id` = `m`.`id`
+                    INNER JOIN `location_has_products` `lhp` ON `p`.`id` = `lhp`.`product_id`
+                    WHERE `lhp`.`location_id` = ?"
+                );
+                $stmt->execute([$location['id']]);
+        
+                $result[] = $stmt->fetchAll();
+            }
             break;
         case "order_list":
             foreach ($_SESSION['locations'] as $location) {
