@@ -1,4 +1,10 @@
 <?php
+    if (isset($_POST['report'])) {
+        $report = $_POST['report'];
+    } else {
+        $report = "";
+    }
+
     session_start();
     $_SESSION['url'] = __DIR__;
     $_SESSION['access'] = 'office';
@@ -51,12 +57,6 @@
             <div>
                 <div>
                     <?php // loads the right title for the report
-                        if (isset($_POST['report'])) {
-                            $report = $_POST['report'];
-                        } else {
-                            $report = "";
-                        }
-
                         switch ($report) {
                             case "total_stock":
                                 echo "<h1>Rapportage - Totale voorraad</h1>";
