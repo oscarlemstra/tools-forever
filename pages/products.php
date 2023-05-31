@@ -87,8 +87,8 @@
                                 <th>Product</th>
                                 <th>Type</th>
                                 <th>Fabriek</th>
-                                <th>Inkoop prijs</th>
-                                <th>Verkoop prijs</th>
+                                <th>Inkoopprijs</th>
+                                <th>Verkoopprijs</th>
                                 <th>In voorraad</th>
                                 <th>Minimum voorraad</th>
                                 <th>Bewerken</th>
