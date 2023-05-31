@@ -11,6 +11,10 @@
     <tbody>
         <?php // create's <tr> elements with the report data
             foreach ($_SESSION['report'] as $locationRecord) {
+                if (empty($locationRecord)) {
+                    continue;
+                }
+
                 foreach ($_SESSION['locations'] as $location) {
                     if ($locationRecord[0]['location_id'] === $location['id']) {
                         echo '<tr>';
@@ -24,8 +28,8 @@
                         echo '<td>'.$record['p_name'].'</td>';
                         echo '<td>'.$record['type'].'</td>';
                         echo '<td>'.$record['m_name'].'</td>';
-                        echo '<td>test</td>';
-                        echo '<td>test</td>';
+                        echo '<td>'.$record['min_stock'].'</td>';
+                        echo '<td>'.$record['to_order'].'</td>';
                     echo '</tr>';
                 }
             }

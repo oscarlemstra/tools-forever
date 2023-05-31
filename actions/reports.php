@@ -49,7 +49,19 @@ try {
             echo "<h1>Rapportage - Voorraad waarde</h1>";
             break;
         case "order_list":
-            echo "<h1>Rapportage - Bestellijst</h1>";
+            foreach ($_SESSION['locations'] as $location) {
+                $stmt = $conn->prepare(
+                    "SELECT `pn`.`name` AS `p_name`, `p`.`type`, `m`.`name` AS `m_name`, `lhp`.`min_stock`, `lhp`.`min_stock` - `lhp`.`in_stock` AS `to_order`, `lhp`.`location_id`
+                    FROM `products` `p`
+                    INNER JOIN `product_names` `pn` ON `p`.`product_name_id` = `pn`.`id`
+                    INNER JOIN `manufacturers` `m` ON `p`.`manufacturer_id` = `m`.`id`
+                    INNER JOIN `location_has_products` `lhp` ON `p`.`id` = `lhp`.`product_id`
+                    WHERE `lhp`.`location_id` = ? AND `lhp`.`in_stock` < `lhp`.`min_stock`"
+                );
+                $stmt->execute([$location['id']]);
+        
+                $result[] = $stmt->fetchAll();
+            }
             break;
         default:
             $result = "no post data";
