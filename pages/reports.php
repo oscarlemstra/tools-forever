@@ -83,7 +83,19 @@
                         }
 
                         if (!empty($_SESSION['report']) && empty($_SESSION['error'])) {
-                            include '../includes/report_tables/total_stock.php';
+                            switch ($report) {
+                                case "total_stock":
+                                    include '../includes/report_tables/total_stock.php';
+                                    break;
+                                case "stock_value":
+                                    include '../includes/report_tables/stock_value.php';
+                                    break;
+                                case "order_list":
+                                    include '../includes/report_tables/order_list.php';
+                                    break;
+                                default:
+                                    echo "<p>Selecteer een rapportage.</p>";
+                            }
                         }
                     ?>
                 </div>
