@@ -11,7 +11,7 @@ $password = "";
 
 // @online
 // $servername = "localhost";
-// $dbname = "tools_forever";
-// $username = "";
-// $password = "";
+// $dbname = "u91058p152446_toolsForever";
+// $username = "u91058p152446_bob";
+// $password = "TFE_bob";
 ?>
