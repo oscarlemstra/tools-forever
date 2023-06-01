@@ -1,8 +1,5 @@
 <?php
-$servername = "localhost";
-$dbname = "tools_forever";
-$username = "root";
-$password = "";
+require_once "../includes/pdo_variables.php";
 
 unset($_SESSION['error']);
 
