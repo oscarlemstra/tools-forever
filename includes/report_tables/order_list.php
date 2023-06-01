@@ -28,8 +28,8 @@
                         echo '<td>'.$record['p_name'].'</td>';
                         echo '<td>'.$record['type'].'</td>';
                         echo '<td>'.$record['m_name'].'</td>';
-                        echo '<td>'.$record['min_stock'].'</td>';
-                        echo '<td>'.$record['to_order'].'</td>';
+                        echo '<td class="text-align-end">'.$record['min_stock'].'</td>';
+                        echo '<td class="text-align-end">'.$record['to_order'].'</td>';
                     echo '</tr>';
                 }
             }
