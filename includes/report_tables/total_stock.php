@@ -25,9 +25,9 @@
                         echo '<td>'.$record['p_name'].'</td>';
                         echo '<td>'.$record['type'].'</td>';
                         echo '<td>'.$record['m_name'].'</td>';
-                        echo '<td>'.$record['in_stock'].'</td>';
-                        echo '<td>€ '.$record['purchase_price'].'</td>';
-                        echo '<td>€ '.$record['sell_price'].'</td>';
+                        echo '<td class="text-align-end">'.$record['in_stock'].'</td>';
+                        echo '<td class="text-align-end">€ '.$record['purchase_price'].'</td>';
+                        echo '<td class="text-align-end">€ '.$record['sell_price'].'</td>';
                     echo '</tr>';
                 }
             }

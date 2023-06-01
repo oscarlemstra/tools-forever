@@ -101,10 +101,10 @@
                                         echo '<td>'.$product['p_name'].'</td>';
                                         echo '<td>'.$product['type'].'</td>';
                                         echo '<td>'.$product['m_name'].'</td>';
-                                        echo '<td>'.$product['purchase_price'].'</td>';
-                                        echo '<td>'.$product['sell_price'].'</td>';
-                                        echo '<td>'.$product['in_stock'].'</td>';
-                                        echo '<td>'.$product['min_stock'].'</td>';
+                                        echo '<td class="text-align-end">€ '.$product['purchase_price'].'</td>';
+                                        echo '<td class="text-align-end">€ '.$product['sell_price'].'</td>';
+                                        echo '<td class="text-align-end">'.$product['in_stock'].'</td>';
+                                        echo '<td class="text-align-end">'.$product['min_stock'].'</td>';
                                         echo '<td><a class="text-link" href="./product_edit.php?product='.$product['id'].'">Bewerken</a></td>';
                                     echo '</tr>';
                                 }

@@ -106,13 +106,10 @@
                             <?php // create's <tr> elements with the products data
                                 foreach ($_SESSION['products'] as $product) {
                                     echo '<tr>';
-                                    foreach ($product as $index => $value) {
-                                        if (gettype($index) === "string") {
-                                            echo '<td>'.$value.'</td>';
-                                        } else {
-                                            continue;
-                                        }
-                                    }
+                                        echo '<td>'.$product['product_name'].'</td>';
+                                        echo '<td>'.$product['type'].'</td>';
+                                        echo '<td>'.$product['manufacturer'].'</td>';
+                                        echo '<td class="text-align-end">'.$product['in_stock'].'</td>';
                                     echo '</tr>';
                                 }
                             ?>
