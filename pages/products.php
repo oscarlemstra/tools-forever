@@ -27,7 +27,7 @@
             <div>
                 <?php
                     if ((int) $_SESSION['user']['role_id'] >= 2) {
-                        echo '<a class="nav-link" href="">Rapportages</a>';
+                        echo '<a class="nav-link" href="./reports.php">Rapportages</a>';
                         echo '<a class="nav-link nav-link-selected" href="">Producten</a>';
                     }
 
@@ -87,8 +87,8 @@
                                 <th>Product</th>
                                 <th>Type</th>
                                 <th>Fabriek</th>
-                                <th>Inkoop prijs</th>
-                                <th>Verkoop prijs</th>
+                                <th>Inkoopprijs</th>
+                                <th>Verkoopprijs</th>
                                 <th>In voorraad</th>
                                 <th>Minimum voorraad</th>
                                 <th>Bewerken</th>

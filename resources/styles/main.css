@@ -138,6 +138,14 @@ a {
     width: 35%;
 }
 
+.text-align-end {
+    text-align: end;
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
 
 
 /* table */
@@ -172,6 +180,10 @@ th, td {
     border-right: solid #343F4B 2px;
     padding: 5px;
     font-size: smaller;
+}
+
+.table-location {
+    background-color: orange;
 }
 
 
