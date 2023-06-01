@@ -1,10 +1,7 @@
 <?php
 session_start();
 
-$servername = "localhost";
-$dbname = "tools_forever";
-$username = "root";
-$password = "";
+require_once "../includes/pdo_variables.php";
 
 
 // delete's all location_has_product records of the product

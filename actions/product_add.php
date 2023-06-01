@@ -1,10 +1,7 @@
 <?php
 session_start();
 
-$servername = "localhost";
-$dbname = "tools_forever";
-$username = "root";
-$password = "";
+require_once "../includes/pdo_variables.php";
 
 
 // inserts a product
