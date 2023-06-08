@@ -61,7 +61,7 @@
                     echo '</select>';
                 ?>
 
-                <?php // a select element for prduct
+                <?php // a select element for product
                     echo '<select class="mb-10" id="product" name="product">';
                     echo '<option value="">Alle Product</option>';
 
