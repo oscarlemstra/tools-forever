@@ -1,9 +1,9 @@
 <?php
     session_start();
     $_SESSION['url'] = __DIR__;
-    $_SESSION['access'] = 'office';
+    $_SESSION['access'] = 'admin';
     require_once "../includes/user_validation.php";
-    require_once "../actions/products.php";
+    require_once "../actions/staff.php";
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="../resources/styles/main.css">
-    <title>Producten</title>
+    <title>Werknemers</title>
 </head>
 <body>
     <div class="main-div">
@@ -28,42 +28,47 @@
                 <?php
                     if ((int) $_SESSION['user']['role_id'] >= 2) {
                         echo '<a class="nav-link" href="./reports.php">Rapportages</a>';
-                        echo '<a class="nav-link nav-link-selected" href="">Producten</a>';
+                        echo '<a class="nav-link" href="./products">Producten</a>';
                     }
 
                     if ((int) $_SESSION['user']['role_id'] === 3) {
                         echo '<a class="nav-link" href="">Locaties</a>';
-                        echo '<a class="nav-link" href="">Werknemers</a>';
+                        echo '<a class="nav-link nav-link-selected" href="">Werknemers</a>';
                     }
                 ?>
             </div>
         </nav>
         <div class="flex-box align-items-flex-start gap-20">
             <form class="element element-s-s p-10 mt-45" action="" method="post">
-                <?php // a select element for prduct
-                    echo '<select class="mb-10" id="product" name="product">';
-                    echo '<option value="all">Alle Product</option>';
+                <?php // a select element for location
+                    echo '<select class="mb-10" id="location" name="location">';
 
-                    foreach ($_SESSION['product_names'] as $product_name) {
-                        if ($product_name['id'] === $_POST['product']) {
-                            echo '<option value="'.$product_name['id'].'" selected>'.$product_name['name'].'</option>';
+                    foreach ($_SESSION['locations'] as $location) {
+                        if (empty($_POST)) {
+                            if ($location['id'] === $_SESSION['user']['location_id']) {
+                                echo '<option value="'.$location['id'].'" selected>'.$location['place_name'].'</option>';
+                            } else {
+                                echo '<option value="'.$location['id'].'">'.$location['place_name'].'</option>';
+                            }
                         } else {
-                            echo '<option value="'.$product_name['id'].'">'.$product_name['name'].'</option>';
+                            if ($location['id'] === $_POST['location']) {
+                                echo '<option value="'.$location['id'].'" selected>'.$location['place_name'].'</option>';
+                            } else {
+                                echo '<option value="'.$location['id'].'">'.$location['place_name'].'</option>';
+                            }
                         }
                     }
                     echo '</select>';
                 ?>
         
-                <input class="main-bt mt-25" type="submit" value="Zoeken">
+                <input class="main-bt mt-25" type="submit" value="Toepassen">
             </form>
             <div>
                 <div class="flex-box justify-content-space-between align-items-center">
-                    <h1>Producten overzicht - <?php echo $_SESSION['worker_location']; ?></h1>
-                    <?php if ((int) $_SESSION['user']['role_id'] === 3) { ?>
-                        <a class="flex-box" href="./product_add.php">
-                            <i class="material-icons plus-icon">add</i>
-                        </a>
-                    <?php } ?>
+                    <h1>Werknemers overzicht - <?php echo $_SESSION['selected_location']; ?></h1>
+                    <a class="flex-box" href="./employee_add.php">
+                        <i class="material-icons plus-icon">add</i>
+                    </a>
                 </div>
                 <div class="element element-s-l p-15">
                     <?php
@@ -75,37 +80,29 @@
                             echo "<p class='error'>".$_SESSION['error']."</p>";
                         }
 
-                        if (empty($_SESSION['products']) && empty($_SESSION['error'])) {
+                        if (empty($_SESSION['staff']) && empty($_SESSION['error'])) {
                             echo "<p>Er zijn geen resultaten gevonden.</p>";
                         }
 
-                        if (!empty($_SESSION['products']) && empty($_SESSION['error'])) {
+                        if (!empty($_SESSION['staff']) && empty($_SESSION['error'])) {
                     ?>
                     <table>
                         <thead>
                             <tr>
-                                <th>Product</th>
-                                <th>Type</th>
-                                <th>Fabriek</th>
-                                <th>Inkoopprijs</th>
-                                <th>Verkoopprijs</th>
-                                <th>In voorraad</th>
-                                <th>Minimum voorraad</th>
+                                <th>Voornaam</th>
+                                <th>Achternaam</th>
+                                <th>Werk rol</th>
                                 <th>Bewerken</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php // create's <tr> elements with the products data
-                                foreach ($_SESSION['products'] as $product) {
+                            <?php // create's <tr> elements with the staff data
+                                foreach ($_SESSION['staff'] as $employee) {
                                     echo '<tr>';
-                                        echo '<td>'.$product['p_name'].'</td>';
-                                        echo '<td>'.$product['type'].'</td>';
-                                        echo '<td>'.$product['m_name'].'</td>';
-                                        echo '<td class="text-align-end">€ '.$product['purchase_price'].'</td>';
-                                        echo '<td class="text-align-end">€ '.$product['sell_price'].'</td>';
-                                        echo '<td class="text-align-end">'.$product['in_stock'].'</td>';
-                                        echo '<td class="text-align-end">'.$product['min_stock'].'</td>';
-                                        echo '<td><a class="text-link" href="./product_edit.php?product='.$product['id'].'">Bewerken</a></td>';
+                                        echo '<td>'.$employee['first_name'].'</td>';
+                                        echo '<td>'.$employee['last_name'].'</td>';
+                                        echo '<td>'.$employee['role'].'</td>';
+                                        echo '<td><a class="text-link" href="./employee_edit.php?employee='.$employee['id'].'">Bewerken</a></td>';
                                     echo '</tr>';
                                 }
                             ?>
@@ -119,4 +116,7 @@
 </body>
 </html>
 
-<?php unset($_SESSION['success']); ?>
+<?php
+unset($_SESSION['success']);
+unset($_SESSION['error']);
+?>
