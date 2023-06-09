@@ -2,13 +2,13 @@
 require_once "../includes/pdo_variables.php";
 
 
-// gets selected product
+// gets selected employee
 try {
     $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $conn->prepare("SELECT * FROM `products` WHERE `id` = ?");
-    $stmt->execute([$_GET['product']]);
+    $stmt = $conn->prepare("SELECT * FROM `staff` WHERE `id` = ?");
+    $stmt->execute([$_GET['employee']]);
 
     $result = $stmt->fetchAll();
 } catch (PDOException $e) {
@@ -17,36 +17,15 @@ try {
 }
 $conn = null;
 
-$_SESSION['product'] = $result[0];
+$_SESSION['employee'] = $result[0];
 
 
-// gets the location_has_product from the selected product with the user's location
+// gets locations
 try {
     $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $conn->prepare(
-        "SELECT * FROM `location_has_products`
-        WHERE `location_id` = ? AND product_id = ?"
-    );
-    $stmt->execute([$_SESSION['user']['location_id'], $_SESSION['product']['id']]);
-
-    $result = $stmt->fetchAll();
-} catch (PDOException $e) {
-    $_SESSION['error'] = 'Er is iets fout gegaan, probeer het later opnieuw!';
-    //echo "Error : " . $e->getMessage();
-}
-$conn = null;
-
-$_SESSION['product_stock'] = $result[0];
-
-
-// gets product_names
-try {
-    $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $stmt = $conn->prepare("SELECT * FROM `product_names`");
+    $stmt = $conn->prepare("SELECT * FROM `locations`");
     $stmt->execute();
 
     $result = $stmt->fetchAll();
@@ -56,15 +35,15 @@ try {
 }
 $conn = null;
 
-$_SESSION['product_names'] = $result;
+$_SESSION['locations'] = $result;
 
 
-// gets manufacturer_names
+// gets roles
 try {
     $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $conn->prepare("SELECT * FROM `manufacturers`");
+    $stmt = $conn->prepare("SELECT * FROM `roles`");
     $stmt->execute();
 
     $result = $stmt->fetchAll();
@@ -74,5 +53,5 @@ try {
 }
 $conn = null;
 
-$_SESSION['manufacturer_names'] = $result;
+$_SESSION['roles'] = $result;
 ?>

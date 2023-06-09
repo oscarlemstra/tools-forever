@@ -3,7 +3,7 @@
     $_SESSION['url'] = __DIR__;
     $_SESSION['access'] = 'admin';
     require_once "../includes/user_validation.php";
-    require_once "../actions/onload/employee_add.php";
+    require_once "../actions/onload/employee_edit.php";
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../resources/styles/main.css">
-    <title>Werknemer toevoegen</title>
+    <title>Werknemer bewerken</title>
 </head>
 <body>
     <div class="main-div">
@@ -40,7 +40,7 @@
         <div class="flex-box justify-content-center">
             <div>
                 <div>
-                    <h1>Werknemer toevoegen</h1>
+                    <h1>Werknemer bewerken</h1>
                 </div>
                 <div class="element element-s-l p-15">
                     <?php
@@ -49,11 +49,11 @@
                         }
                     ?>
 
-                    <form class="flex-box gap-40" action="../actions/employee_add.php" method="post">
+                    <form class="flex-box gap-40" action="../actions/employee_edit.php" method="post">
                         <div class="form-section flex-box flex-direction-column gap-30">
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="first_name">Voornaam</label>
-                                <input type="text" id="first_name" name="first_name" placeholder="voornaam" autofocus required>
+                                <input type="text" id="first_name" name="first_name" value="<?php echo $_SESSION['employee']['first_name']; ?>" placeholder="voornaam" autofocus required>
                             </div>
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="location">Werk locatie</label>
@@ -61,24 +61,24 @@
                                     <option value="">locatie</option>
                                     <?php // loads all the options for location
                                         foreach ($_SESSION['locations'] as $location) {
-                                            echo '<option value="'.$location['id'].'">'.$location['place_name'].'</option>';
+                                            if ($location['id'] === $_SESSION['employee']['location_id']) {
+                                                echo '<option value="'.$location['id'].'" selected>'.$location['place_name'].'</option>';
+                                            } else {
+                                                echo '<option value="'.$location['id'].'">'.$location['place_name'].'</option>';
+                                            }
                                         }
                                     ?>
                                 </select>
                             </div>
-                            <div class="flex-box flex-direction-column gap-5">
-                                <label for="password">Wachtwoord</label>
-                                <input type="text" id="password" name="password" value="<?php echo $password; ?>" placeholder="wachtwoord" required>
-                            </div>
                             <div>
-                                <input class="main-bt mt-25" type="submit" value="Toevoegen">
+                                <input class="main-bt mt-25" type="submit" value="Bewerken">
                             </div>
                         </div>
 
                         <div class="form-section flex-box flex-direction-column gap-30">
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="last_name">Achternaam</label>
-                                <input type="text" id="last_name" name="last_name" placeholder="achternaam" required>
+                                <input type="text" id="last_name" name="last_name" value="<?php echo $_SESSION['employee']['last_name']; ?>" placeholder="achternaam" required>
                             </div>
                             <div class="flex-box flex-direction-column gap-5">
                                 <label for="role">Rol</label>
@@ -86,7 +86,11 @@
                                     <option value="">rol</option>
                                     <?php // loads all the options for role
                                         foreach ($_SESSION['roles'] as $role) {
-                                            echo '<option value="'.$role['id'].'">'.$role['role'].'</option>';
+                                            if ($role['id'] === $_SESSION['employee']['role_id']) {
+                                                echo '<option value="'.$role['id'].'" selected>'.$role['role'].'</option>';
+                                            } else {
+                                                echo '<option value="'.$role['id'].'">'.$role['role'].'</option>';
+                                            }
                                         }
                                     ?>
                                 </select>
