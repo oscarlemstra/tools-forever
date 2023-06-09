@@ -2,12 +2,12 @@
 require_once "../includes/pdo_variables.php";
 
 
-// gets product_names
+// gets locations
 try {
     $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $conn->prepare("SELECT * FROM `product_names`");
+    $stmt = $conn->prepare("SELECT * FROM `locations`");
     $stmt->execute();
 
     $result = $stmt->fetchAll();
@@ -17,15 +17,15 @@ try {
 }
 $conn = null;
 
-$_SESSION['product_names'] = $result;
+$_SESSION['locations'] = $result;
 
 
-// gets manufacturer_names
+// gets roles
 try {
     $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $conn->prepare("SELECT * FROM `manufacturers`");
+    $stmt = $conn->prepare("SELECT * FROM `roles`");
     $stmt->execute();
 
     $result = $stmt->fetchAll();
@@ -35,5 +35,15 @@ try {
 }
 $conn = null;
 
-$_SESSION['manufacturer_names'] = $result;
+$_SESSION['roles'] = $result;
+
+
+// generates a password
+$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+$charactersLength = strlen($characters);
+$password = '';
+
+for ($i = 0; $i < 8; $i++) {
+    $password .= $characters[random_int(0, $charactersLength - 1)];
+}
 ?>

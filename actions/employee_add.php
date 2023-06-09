@@ -3,8 +3,10 @@ session_start();
 
 require_once "../includes/pdo_variables.php";
 
+$_POST['password'] = hash('sha512', $_POST['password']);
 
-// inserts a product
+
+// inserts a employee
 try {
     $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -12,13 +14,11 @@ try {
     $conn->beginTransaction();
 
     $stmt = $conn->prepare(
-        "INSERT INTO `products`
-        (`product_name_id`, `manufacturer_id`, `type`, `purchase_price`, `sell_price`)
+        "INSERT INTO `staff`
+        (`location_id`, `role_id`, `first_name`, `last_name`, `password`)
         VALUES (?, ?, ?, ?, ?)"
     );
-    $stmt->execute([$_POST['product_name'], $_POST['manufacturer'], $_POST['type'], $_POST['purchase_price'], $_POST['sell_price']]);
-
-    $lastInsertId = $conn->lastInsertId();
+    $stmt->execute([$_POST['location'], $_POST['role'], $_POST['first_name'], $_POST['last_name'], $_POST['password']]);
     
     $conn->commit();
 } catch (PDOException $e) {
@@ -29,56 +29,12 @@ try {
 $conn = null;
 
 
-// gets locations
-try {
-    $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $stmt = $conn->prepare("SELECT * FROM `locations`");
-    $stmt->execute();
-
-    $result = $stmt->fetchAll();
-} catch (PDOException $e) {
-    $_SESSION['error'] = 'Er is iets fout gegaan, probeer het later opnieuw!';
-    //echo "Error : " . $e->getMessage();
-}
-$conn = null;
-
-$locations = $result;
-
-
-// inserts location_has_products
-try {
-    $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $conn->beginTransaction();
-
-    $stmt = $conn->prepare(
-        "INSERT INTO `location_has_products`
-        (`location_id`, `product_id`, `in_stock`, `min_stock`)
-        VALUES (?, ?, ?, ?)"
-    );
-
-    foreach ($locations as $location) {
-        $stmt->execute([$location['id'], $lastInsertId, 0, 0]);
-    }
-
-    $conn->commit();
-} catch (PDOException $e) {
-    $conn->rollBack();
-    $_SESSION['error'] = 'Er is iets fout gegaan, probeer het later opnieuw!';
-    //echo "Error : " . $e->getMessage();
-}
-$conn = null;
-
-
 if (!empty($_SESSION['error'])) {
-    header('Location: ../pages/product_add.php');
+    header('Location: ../pages/employee_add.php');
     exit();
 }
 
-$_SESSION['success'] = 'Het product is succesvol toegevoegd!';
-header('Location: ../pages/products.php');
+$_SESSION['success'] = 'Een werknemer is succesvol toegevoegd!';
+header('Location: ../pages/staff.php');
 exit();
 ?>
