@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="../resources/styles/main.css">
     <title>Werknemer bewerken</title>
 </head>
@@ -39,8 +40,13 @@
         </nav>
         <div class="flex-box justify-content-center">
             <div>
-                <div>
+                <div class="flex-box justify-content-space-between align-items-center">
                     <h1>Werknemer bewerken</h1>
+                    <?php if ($_SESSION['employee']['id'] !== $_SESSION['user']['id']) { ?>
+                        <a class="flex-box" href="../actions/employee_del.php">
+                            <i class="material-icons del-icon">delete</i>
+                        </a>
+                    <?php } ?>
                 </div>
                 <div class="element element-s-l p-15">
                     <?php
