@@ -79,7 +79,7 @@
             </form>
             <div>
                 <div>
-                    <h1>Voorraad overzicht</h1>
+                    <h1>Voorraad overzicht - <?php echo $_SESSION['selected_location']; ?></h1>
                 </div>
                 <div class="element element-s-l p-15">
                     <?php

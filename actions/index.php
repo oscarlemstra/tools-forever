@@ -4,6 +4,29 @@ require_once "./includes/pdo_variables.php";
 unset($_SESSION['error']);
 
 
+// gets selected location
+try {
+    $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $stmt = $conn->prepare("SELECT `place_name` FROM `locations` WHERE `id` = ?");
+    
+    if (empty($_POST['location'])) {
+        $stmt->execute([$_SESSION['user']['location_id']]);
+    } else {
+        $stmt->execute([$_POST['location']]);
+    }
+
+    $result = $stmt->fetchAll();
+} catch (PDOException $e) {
+    $_SESSION['error'] = 'Er is iets fout gegaan, probeer het later opnieuw!';
+    //echo "Error : " . $e->getMessage();
+}
+$conn = null;
+
+$_SESSION['selected_location'] = $result[0]['place_name'];
+
+
 // gets locations
 try {
     $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
