@@ -28,7 +28,7 @@
                 <?php
                     if ((int) $_SESSION['user']['role_id'] >= 2) {
                         echo '<a class="nav-link" href="./reports.php">Rapportages</a>';
-                        echo '<a class="nav-link" href="./products">Producten</a>';
+                        echo '<a class="nav-link" href="./products.php">Producten</a>';
                     }
 
                     if ((int) $_SESSION['user']['role_id'] === 3) {
