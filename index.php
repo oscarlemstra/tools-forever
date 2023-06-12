@@ -32,7 +32,7 @@
 
                     if ((int) $_SESSION['user']['role_id'] === 3) {
                         echo '<a class="nav-link" href="">Locaties</a>';
-                        echo '<a class="nav-link" href="">Werknemers</a>';
+                        echo '<a class="nav-link" href="./pages/staff.php">Werknemers</a>';
                     }
                 ?>
             </div>
@@ -61,7 +61,7 @@
                     echo '</select>';
                 ?>
 
-                <?php // a select element for prduct
+                <?php // a select element for product
                     echo '<select class="mb-10" id="product" name="product">';
                     echo '<option value="">Alle Product</option>';
 
@@ -79,7 +79,7 @@
             </form>
             <div>
                 <div>
-                    <h1>Voorraad overzicht</h1>
+                    <h1>Voorraad overzicht - <?php echo $_SESSION['selected_location']; ?></h1>
                 </div>
                 <div class="element element-s-l p-15">
                     <?php

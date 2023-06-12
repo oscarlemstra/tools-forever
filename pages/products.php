@@ -33,14 +33,14 @@
 
                     if ((int) $_SESSION['user']['role_id'] === 3) {
                         echo '<a class="nav-link" href="">Locaties</a>';
-                        echo '<a class="nav-link" href="">Werknemers</a>';
+                        echo '<a class="nav-link" href="./staff.php">Werknemers</a>';
                     }
                 ?>
             </div>
         </nav>
         <div class="flex-box align-items-flex-start gap-20">
             <form class="element element-s-s p-10 mt-45" action="" method="post">
-                <?php // a select element for prduct
+                <?php // a select element for product
                     echo '<select class="mb-10" id="product" name="product">';
                     echo '<option value="all">Alle Product</option>';
 

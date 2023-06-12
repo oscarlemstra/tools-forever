@@ -38,7 +38,7 @@
 
                     if ((int) $_SESSION['user']['role_id'] === 3) {
                         echo '<a class="nav-link" href="">Locaties</a>';
-                        echo '<a class="nav-link" href="">Werknemers</a>';
+                        echo '<a class="nav-link" href="./staff.php">Werknemers</a>';
                     }
                 ?>
             </div>
