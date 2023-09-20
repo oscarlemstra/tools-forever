@@ -1,6 +1,6 @@
 <?php
 if (empty($_SESSION['user'])) {
-    $exploded_url = explode('\\', $_SESSION['url']);
+    $exploded_url = explode('/', $_SESSION['url']);
     $last_element = count($exploded_url) - 1;
 
     if ($exploded_url[$last_element] === "pages") {
