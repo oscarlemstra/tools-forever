@@ -13,5 +13,5 @@ $password = "";
 // $servername = "localhost";
 // $dbname = "u91058p152446_toolsForever";
 // $username = "u91058p152446_bob";
-// $password = "TFE_bob";
+// $password = "dit wil je wel graag weten he";
 ?>
